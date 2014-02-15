@@ -1,6 +1,8 @@
 {
-  "name": "foundation-libsass-template",
+  "name": "CCSP",
   "dependencies": {
-    "foundation": "zurb/bower-foundation"
+    "foundation": "zurb/bower-foundation",
+	"jquery.easy-pie-chart": "*",
+	"sticky": "*"
   }
 }

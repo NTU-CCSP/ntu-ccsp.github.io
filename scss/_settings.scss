@@ -16,15 +16,20 @@
 // Since the typical default browser font-size is 16px, that makes the calculation for grid size.
 // If you want your base font-size to be different and not have it affect the grid breakpoints,
 // set $rem-base to $base-font-size and make sure $base-font-size is a px value.
-// $base-font-size: 100%;
+$base-font-size: 100%;
 
 // The $base-line-height is 100% while $base-font-size is 150%
-// $base-line-height: 150%;
+$base-line-height: 150%;
 
 // We use this to control whether or not CSS classes come through in the gem files.
 // $include-html-classes: true;
 // $include-print-styles: true;
 // $include-html-global-classes: $include-html-classes;
+
+//Custom Color
+$blue: #4C93EB;
+$orange: #F27845;
+$green: #64CE83;
 
 // Grid
 
@@ -37,8 +42,8 @@
 
 // We use these to control various global styles
 // $body-bg: #fff;
-// $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-color: #3d3d3d;
+$body-font-family:  "Source Sans Pro", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "文泉驛微米黑", "WenQuanYi Micro Hei Light", "微軟正黑體", "Microsoft JhengHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -809,7 +814,6 @@
 // $price-money-size: rem-calc(32);
 // $price-money-font-family: $body-font-family;
 
-
 // We use these to control the description styles
 // $price-bg: #fff;
 // $price-desc-color: #777;
@@ -908,8 +912,6 @@
 // $side-nav-font-family: $body-font-family;
 // $side-nav-active-font-family: $side-nav-font-family;
 
-
-
 // We use these to control border styles
 // $side-nav-divider-size: 1px;
 // $side-nav-divider-style: solid;
@@ -963,20 +965,21 @@
 
 // We use this to control the definition
 // $sub-nav-font-family: $body-font-family;
-// $sub-nav-font-size: rem-calc(14);
-// $sub-nav-font-color: #999;
-// $sub-nav-font-weight: normal;
+$sub-nav-font-size: rem-calc(20);
+$sub-nav-font-color: #fff;
+$sub-nav-font-weight: 300;
 // $sub-nav-text-decoration: none;
-// $sub-nav-border-radius: 3px;
-// $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
-
+$sub-nav-border-radius: 6px;
+$sub-nav-border-color: rgba(255,255,255,0.4);
+$sub-nav-border-size: 1px;
+$sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -15%);
 
 // We use these to control the active item styles
 
-// $sub-nav-active-font-weight: normal;
-// $sub-nav-active-bg: $primary-color;
-// $sub-nav-active-bg-hover: scale-color($sub-nav-active-bg, $lightness: -14%);
-// $sub-nav-active-color: #fff;
+$sub-nav-active-font-weight: 300;
+$sub-nav-active-bg: rgba(255,255,255,0);
+$sub-nav-active-bg-hover: rgba(255,255,255,0.2);
+$sub-nav-active-color: scale-color($orange, $lightness: 86%);
 // $sub-nav-active-padding: rem-calc(3 16);
 // $sub-nav-active-cursor: default;
 

@@ -16,7 +16,6 @@ module.exports = function(grunt) {
         }
       }
     },
-
     connect: {
       server: {
         options: {
@@ -25,7 +24,6 @@ module.exports = function(grunt) {
         }
       }
     },
-
     watch: {
       grunt: { files: ['Gruntfile.js'] },
       options:{
@@ -44,12 +42,13 @@ module.exports = function(grunt) {
         options:{
           livereload: false
         },
-        files: 'scss/**/*.scss',
+        files: ['scss/**/*.scss'],
         tasks: ['sass']
       }
     }
   });
 
+  
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
