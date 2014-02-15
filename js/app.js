@@ -2,7 +2,7 @@ $(document).foundation();
 
 
 $(function() {
-    $("nav").sticky({topSpacing:0});
+    $("nav").sticky({topSpacing:0,wrapperClassName:'nav-wrapper'});
     $.scrollIt({
         easing: 'easeInOutExpo',
         scrollTime: 700,

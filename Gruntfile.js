@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         options:{
           livereload: false
         },
-        files: ['scss/**/*.scss'],
+        files: ['scss/**/*.scss','scss/**/*.sass'],
         tasks: ['compass']
       }
     }

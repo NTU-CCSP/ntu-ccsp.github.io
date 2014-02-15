@@ -2,6 +2,37 @@
 @import 'compass/utilities';
 @import 'compass/layout';
 
+// section basic setting -------
+
+.section-wrapper{
+	padding:100px 0;
+	
+}
+
+.section-title{
+	text-align: center;
+	padding-bottom: 80px;
+	font-family: $str-font;
+	font-weight: 700;
+	text-transform: uppercase;
+	@media #{$medium-up} {
+		font-size: rem-calc(48);	
+	}
+	@media #{$large-up} {
+		font-size: rem-calc(60);
+	}
+}
+
+.parallax-wrapper{
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 60px 0 80px;
+	@include box-shadow(0px 0px 28px 0px rgba(0, 0, 0, 0.7) inset);
+
+}
+
+//header---------------------- 
+
 header{
 	position: relative;
 	color:#fff;
@@ -74,7 +105,6 @@ header{
 			color: rgb(211,211,211);
 			font-weight: 300;
 			font-size: rem-calc(20);
-
 			@media #{$large-up} { 
 				font-size: rem-calc(30);
 			}
@@ -82,21 +112,24 @@ header{
 	}
 }
 
+// NAV -------------
 
-
-nav{
+.nav-wrapper{
 	position: absolute;
+	margin-top: -50px;
 	z-index: 200;
 	width: 100%;
-	text-align: center;
+}
+
+nav{
 	height: 50px;
-	margin-top: -50px;
+	width: 100%;
+	text-align: center;
 	background: rgba(49,49,49,.2);
-	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.3);
+	@include box-shadow( 0px 2px 2px 0px rgba(0, 0, 0, 0.3) );
 }
 
 .is-sticky nav{
-	margin-top: 0px;
 	background: rgba(49,49,49,.95);
 }
 
@@ -104,30 +137,20 @@ nav{
 .sub-nav{
 	display: inline-block;
 	line-height: 50px;
+	a{
+		border: $sub-nav-border-size transparent solid;
+		@include transition(color 0.15s ease-in);
+	}
+
 	.active a{
 		 border: $sub-nav-border-size $sub-nav-border-color solid;
 		 border-radius: $sub-nav-border-radius;
+		 background-clip: padding-box;	 
 	}
 	
 }
 
-section{
-	padding:30px 0 120px;
-}
 
-.section-title{
-	text-align: center;
-	padding: 60px 0 80px;
-	font-family: $str-font;
-	font-weight: 700;
-	text-transform: uppercase;
-	@media #{$medium-up} {
-		font-size: rem-calc(48);	
-	}
-	@media #{$large-up} {
-		font-size: rem-calc(60);
-	}
-}
 
 //---- section bg set----
 #belief{
@@ -150,11 +173,18 @@ section{
 	}
 	.bg-fire{
 		background-image: url("../img/fire.jpg");
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-position: center center;
-		padding: 60px 0 80px;
 	}
+}
+
+#project{
+	color:#fff;
+	.bg-project{
+		background-image: url("../img/project.jpg");
+	}
+}
+
+#member{
+	background: url("../img/cubes.png");
 }
 
 #join{
@@ -225,6 +255,8 @@ $line-width: 2px;
 
 //----- icon list end-------
 
+// Grade chart
+
 .chart{
 	position: relative;
 	text-align: center;
@@ -261,19 +293,23 @@ $line-width: 2px;
 }
 
 .chart-title{
-	// text-align: center;
-	// h2{
-	// 	text-align: center;
-	// }
 }
 
-.parallax-wrapper{
-	position: relative;
-	// overflow: hidden;
-	background-repeat: repeat;
+// ------ person 
+
+.person{
+	
 }
+
+.head{
+	@include hexagon(300px,300px);
+
+}
+
+//----------
 
 $button-movement: 2px;
+
 
 // ::after pseudo-element covering the button making sure the click event fires,
 // even if the button moves around.
