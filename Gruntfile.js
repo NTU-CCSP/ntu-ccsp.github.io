@@ -57,7 +57,7 @@ module.exports = function(grunt) {
     //
     copy: {
       build: {
-        src: ['**', '!build'],
+        src: ['**', '!build', '!Gruntfile.js', '!node_modules/**', '!config/**'],
         dest: 'build',
         expand: true
       }
@@ -76,6 +76,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', 'Use during development.', ['compass:dev', 'connect:server', 'watch']);
-  grunt.registerTask('build', 'Build websites in build/ directory.', ['clean', 'copy', 'compass:build']);
-  grunt.registerTask('test', 'Test built pages.', ['connect:test']);
+  grunt.registerTask('build',   'Build websites in build directory.', ['clean', 'copy', 'compass:build']);
+  grunt.registerTask('test',    'Test built pages.', ['connect:test']);
 };
