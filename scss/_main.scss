@@ -1,3 +1,7 @@
+@import 'compass/css3';
+@import 'compass/utilities';
+@import 'compass/layout';
+
 header{
 	position: relative;
 	color:#fff;
@@ -269,31 +273,41 @@ $line-width: 2px;
 	background-repeat: repeat;
 }
 
+$button-movement: 2px;
+
+// ::after pseudo-element covering the button making sure the click event fires,
+// even if the button moves around.
+%click-button-hack {
+  &:after {
+    // border: 1px solid red;
+    // background: rgba(green, .5);
+    content: '';
+    @include stretch;
+  }
+
+  &:active:after {
+	  top: $button-movement * -1;
+  }
+}
 
 .button-primary{
-	color: #fff;
+	@extend %click-button-hack;
 	display: inline-block;
 	text-align: center;
 	font-weight: bold !important;
-	background: #64ce83;
 	cursor: pointer;
 	text-decoration: none;
-	text-shadow: 0 1px 0px rgba(0,0,0,0.15);
-	border-width: 1px 1px 3px !important;
+	text-shadow: 0 1px 0px rgba(#000, .15);
+	border-width: 1px 1px 1px+$button-movement;
 	border-style: solid;
-	border-color: #3dc264;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	-ms-border-radius: 5px;
-	-o-border-radius: 5px;
-	border-radius: 5px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	-webkit-box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
-	-moz-box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
-	box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+	border-color: darken($primary-color, 10%);
+	@include border-radius(5px);
+	@include box-shadow(0 -1px 0 rgba(#fff, .1) inset);
+	@include transform(translate3d(0, 0, 0));
+	@include transition(border-width .2s, background-color .2s, transform .2s);
+
+	&:active{
+		border-bottom-width: 1px;
+		@include transform(translate3d(0, $button-movement, 0));
+	}
 }

@@ -3,16 +3,10 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    sass: {
-      options: {
-        includePaths: ['bower_components/foundation/scss']
-      },
+    compass: {
       dist: {
         options: {
-          outputStyle: 'compressed'
-        },
-        files: {
-          'css/app.css': 'scss/app.scss'
+          config: 'config/compass.rb',
         }
       }
     },
@@ -38,21 +32,20 @@ module.exports = function(grunt) {
       css: {
         files: ['css/**/*.css']
       },
-      sass: {
+      compass: {
         options:{
           livereload: false
         },
         files: ['scss/**/*.scss'],
-        tasks: ['sass']
+        tasks: ['compass']
       }
     }
   });
 
-  
-  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('build', ['sass']);
+  grunt.registerTask('build', ['compass']);
   grunt.registerTask('default', ['build', 'connect', 'watch']);
 };
