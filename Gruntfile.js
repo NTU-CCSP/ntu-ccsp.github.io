@@ -66,6 +66,12 @@ module.exports = function(grunt) {
       build: {
         src: ['build']
       }
+    },
+    'gh-pages': {
+      options: {
+        base: 'build'
+      },
+      src: ['*', 'bower_components/**', 'css/**', 'fonts/**', 'img/**', 'js/**']
     }
   });
 
@@ -74,8 +80,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-gh-pages');
 
   grunt.registerTask('default', 'Use during development.', ['compass:dev', 'connect:server', 'watch']);
-  grunt.registerTask('build',   'Build websites in build directory.', ['clean', 'copy', 'compass:build']);
+  grunt.registerTask('build',   'Build the website in build directory.', ['clean', 'copy', 'compass:build']);
   grunt.registerTask('test',    'Test built pages.', ['connect:test']);
+  grunt.registerTask('push',    'Build the website and push to gh-pages.', ['build', 'gh-pages']);
 };
