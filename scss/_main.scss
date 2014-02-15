@@ -15,6 +15,7 @@
 	font-family: $str-font;
 	font-weight: 700;
 	text-transform: uppercase;
+	color:#434343;
 	@media #{$medium-up} {
 		font-size: rem-calc(48);	
 	}
@@ -298,12 +299,12 @@ $line-width: 2px;
 // ------ person 
 
 .person{
-	
+
 }
 
 .head{
-	@include hexagon(300px,300px);
-
+	
+	@include hexagon(240px,240px);
 }
 
 //----------
@@ -336,7 +337,7 @@ $button-movement: 2px;
 	text-shadow: 0 1px 0px rgba(#000, .15);
 	border-width: 1px 1px 1px+$button-movement;
 	border-style: solid;
-	border-color: darken($primary-color, 10%);
+	border-color: darken($primary-color, 20%);
 	@include border-radius(5px);
 	@include box-shadow(0 -1px 0 rgba(#fff, .1) inset);
 	@include transform(translate3d(0, 0, 0));
