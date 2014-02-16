@@ -6,7 +6,12 @@ $(function() {
     $.scrollIt({
         easing: 'easeInOutExpo',
         scrollTime: 700,
-        topOffset: -50
+        topOffset: -50,
+        onPageChange: function(idx){
+            var url = "#" + $('[data-scroll-index='+idx+']').attr('id');
+            // console.log('pageChange', url);
+            ga('send', 'pageview', url);
+        }
     });
     $('.chart').easyPieChart({
         lineWidth: 15,
