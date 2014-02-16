@@ -6,7 +6,7 @@
 
 .section-wrapper{
 	padding:100px 0;
-	
+	// overflow:hidden;
 }
 
 .section-title{
@@ -49,6 +49,13 @@
 #ccsp .omega{
 	float:none;
 	@media #{$large-up} {
+		float:right;
+	}
+}
+
+#ccsp .omega-m{
+	float:none;
+	@media #{$medium-up} {
 		float:right;
 	}
 }
@@ -379,7 +386,7 @@ $line-width: 2px;
 	color:lighten($grey,4%);
 
 	@media #{$large-up} {
-		font-size: rem-calc(25);
+		font-size: rem-calc(24);
 	}
 }
 
@@ -390,26 +397,47 @@ $line-width: 2px;
 	}
 	margin-bottom: 68px;
 	
-	.omega{
+	.last-one{
 		margin-bottom:0;	
 	}
 }
 
 // ------ person 
 
-
 .person{
-	overflow: hidden;
+	
+}
+
+.intro{
+	text-align: center;
+	padding-top:20px;
+	.name{
+		font-size: rem-calc(28);
+		margin-bottom: 0;
+	}
+	.title{
+		color:lighten($grey,45%);
+		font-weight: 300;
+		font-size: rem-calc(18);
+		margin-top: -6px;
+	}
+	.desc{
+		color: lighten( $grey,15% );
+	}
+}
+
+.round-head{
+
+	>img{ border-radius: 50%; }
 }
 
 .head{
-	
 	@include hexagon(240px,240px);
 }
 
 //----------
 
-$button-movement: 2px;
+$button-movement: 3px;
 
 
 // ::after pseudo-element covering the button making sure the click event fires,
@@ -437,7 +465,7 @@ $button-movement: 2px;
 	text-shadow: 0 1px 0px rgba(#000, .15);
 	border-width: 1px 1px 1px+$button-movement;
 	border-style: solid;
-	border-color: darken($primary-color, 20%);
+	border-color: darken($primary-color, 10%);
 	@include border-radius(5px);
 	@include box-shadow(0 -1px 0 rgba(#fff, .1) inset);
 	@include transform(translate3d(0, 0, 0));
@@ -447,4 +475,9 @@ $button-movement: 2px;
 		border-bottom-width: 1px;
 		@include transform(translate3d(0, $button-movement, 0));
 	}
+}
+
+
+footer{
+	background:#474b59;
 }
