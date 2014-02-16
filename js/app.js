@@ -1,13 +1,53 @@
 $(document).foundation();
 
+var nav_height = 50;
 
 $(function() {
-    $("nav").sticky({topSpacing:0,wrapperClassName:'nav-wrapper'});
+
+    var small_screen = !matchMedia(Foundation.media_queries['large']).matches;
+
+    if( !small_screen ){
+        $("nav").sticky({topSpacing:0,wrapperClassName:'nav-wrapper'});
+        $.scrollIt({
+            easing: 'easeInOutExpo',
+            scrollTime: 700,
+            topOffset: nav_height
+        });
+
+        $('.parallax-wrapper').each(function(){
+            var parallax_section = $(this);
+            var parallax_speed = parseFloat(parallax_section.attr('data-bgspeed'));
+            // if( parallax_speed == 0 || gdlr_touch_device ) return;
+            if( parallax_speed == -1 ){
+                parallax_section.css('background-attachment', 'fixed');
+                parallax_section.css('background-position', 'center center');
+                return;
+            }
+
+            $(window).scroll(function(){
+                // if in area of interest
+                if( ( $(window).scrollTop() + $(window).height() > parallax_section.offset().top ) &&
+                    ( $(window).scrollTop() < parallax_section.offset().top + parallax_section.outerHeight() ) ){
+                    
+                    var scroll_pos = 0;
+                    if( $(window).height() > parallax_section.offset().top ){
+                        scroll_pos = $(window).scrollTop();
+                    }else{
+                        scroll_pos = $(window).scrollTop() + $(window).height() - parallax_section.offset().top;
+                    }
+                    parallax_section.css('background-position', 'center ' + (-scroll_pos * parallax_speed) + 'px');
+                }
+            });
+        });
+    }
+
     $.scrollIt({
         easing: 'easeInOutExpo',
         scrollTime: 700,
-        topOffset: -50
+        topOffset: 0
     });
+
+
     $('.chart').easyPieChart({
         lineWidth: 15,
         size:200,
@@ -18,29 +58,9 @@ $(function() {
         lineCap: 'square'
     });
 
-    $('.parallax-wrapper').each(function(){
-		var parallax_section = $(this);
-		var parallax_speed = parseFloat(parallax_section.attr('data-bgspeed'));
-		// if( parallax_speed == 0 || gdlr_touch_device ) return;
-		if( parallax_speed == -1 ){
-			parallax_section.css('background-attachment', 'fixed');
-			parallax_section.css('background-position', 'center center');
-			return;
-		}
+    
+    
+    $( window ).resize(function() {
 
-        $(window).scroll(function(){
-            // if in area of interest
-            if( ( $(window).scrollTop() + $(window).height() > parallax_section.offset().top ) &&
-                ( $(window).scrollTop() < parallax_section.offset().top + parallax_section.outerHeight() ) ){
-                
-                var scroll_pos = 0;
-                if( $(window).height() > parallax_section.offset().top ){
-                    scroll_pos = $(window).scrollTop();
-                }else{
-                    scroll_pos = $(window).scrollTop() + $(window).height() - parallax_section.offset().top;
-                }
-                parallax_section.css('background-position', 'center ' + (-scroll_pos * parallax_speed) + 'px');
-            }
-        });
     });
-});
+})
