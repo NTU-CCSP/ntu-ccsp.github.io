@@ -8,13 +8,13 @@ module.exports = function(grunt) {
         config: 'config/compass.rb'
       },
       dev: {},
-      // build: {
-      //   options: {
-      //     outputStyle: 'compressed', // Overriding compass.rb
-      //     noLineComments: true,
-      //     basePath: 'build'
-      //   }
-      // }
+      build: {
+        options: {
+          outputStyle: 'compressed', // Overriding compass.rb
+          noLineComments: true,
+          basePath: 'build'
+        }
+      }
     },
     connect: {
       server: {
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
           livereload: false
         },
         files: ['scss/**/*.scss','scss/**/*.sass'],
-        tasks: ['compass']
+        tasks: ['compass:dev']
       }
     },
     // http://www.sitepoint.com/writing-awesome-build-script-grunt/

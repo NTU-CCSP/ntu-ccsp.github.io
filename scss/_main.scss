@@ -6,7 +6,6 @@
 
 .section-wrapper{
 	padding:100px 0;
-	// overflow:hidden;
 }
 
 .section-title{
@@ -14,6 +13,7 @@
 	padding-bottom: 80px;
 	font-family: $str-font;
 	font-weight: 700;
+	font-size: rem-calc(32);
 	text-transform: uppercase;
 	color:#434343;
 	@media #{$medium-up} {
@@ -127,10 +127,14 @@ header{
 		z-index: 100;
 		@media #{$large-up}{
 			padding-top:rem-calc(40);
+			margin-bottom: rem-calc(84);
 		}
-		font-weight: 300;
+
+		@media #{$medium-up}{
+			margin-bottom: rem-calc(44);
+		}
+
 		h2{
-			// color:scale-color($green,$lightness: 70%, $saturation: 40%, $alpha: 60%);
 			color: rgb(211,211,211);
 			font-weight: 300;
 			font-size: rem-calc(20);
@@ -214,7 +218,7 @@ nav{
 	background: $blue;
 	color:#fff;	
 	h2{
-	color:#eee;	
+	color:#fff;	
 	}
 }
 
@@ -225,6 +229,10 @@ nav{
 	}
 	.bg-fire{
 		background-image: url("../img/fire.jpg");
+	}
+	.section-subtitle{
+		font-size: rem-calc(39);
+		text-align: justify;
 	}
 }
 
@@ -405,8 +413,7 @@ $line-width: 2px;
 // ------ person 
 
 .person{
-	margin: 0 auto;
-	width:100%;
+	overflow:hidden;
 }
 
 .intro{
@@ -440,6 +447,16 @@ $line-width: 2px;
 
 h2.slogan{
 	padding-bottom: 10px;
+}
+
+#join h3{
+	font-size: rem-calc(28);
+}
+
+#join p{
+	font-size: rem-calc(20);
+	color: lighten($grey, 15%);
+	padding: 10px 0 40px;
 }
 
 
