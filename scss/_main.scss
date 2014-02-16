@@ -125,6 +125,7 @@ header{
 	.subheading{
 		position: relative;
 		z-index: 100;
+		margin-bottom: rem-calc(24);
 		@media #{$large-up}{
 			padding-top:rem-calc(40);
 			margin-bottom: rem-calc(84);
@@ -457,13 +458,20 @@ h2.slogan{
 }
 
 #join h3{
-	font-size: rem-calc(28);
+	color:$orange;
+	margin-top: -10px;
+	@media #{$medium} {
+		font-size: rem-calc(28);	
+	}
+	
 }
 
 #join p{
-	font-size: rem-calc(20);
+	@media #{$medium} {
+		font-size: rem-calc(20);
+	}
 	color: lighten($grey, 15%);
-	padding: 10px 0 40px;
+	padding: 20px 0 30px;
 }
 
 
