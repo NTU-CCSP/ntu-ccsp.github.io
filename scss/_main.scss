@@ -6,7 +6,7 @@
 
 .section-wrapper{
 	padding:100px 0;
-	
+	// overflow:hidden;
 }
 
 .section-title{
@@ -24,12 +24,40 @@
 	}
 }
 
+.section-subtitle{
+	font-family: $str-font;
+	font-weight: 700;
+	text-transform: uppercase;
+	margin-top: 0;
+	font-size: rem-calc(52);
+	text-align: center;
+	@media #{$large-up} {
+		text-align: left;
+	}
+}
+
 .parallax-wrapper{
 	background-repeat: no-repeat;
 	background-position: center center;
-	padding: 60px 0 80px;
+	background-size: cover;
+	padding: 80px 0;
 	@include box-shadow(0px 0px 28px 0px rgba(0, 0, 0, 0.7) inset);
 
+}
+
+//hack fix
+#ccsp .omega{
+	float:none;
+	@media #{$large-up} {
+		float:right;
+	}
+}
+
+#ccsp .omega-m{
+	float:none;
+	@media #{$medium-up} {
+		float:right;
+	}
 }
 
 //header---------------------- 
@@ -153,9 +181,33 @@ nav{
 
 
 
-//---- section bg set----
+//---- section basic set----
 #belief{
 	background:#fff;
+	background:url('../img/connect.png');
+	h4{
+		color:$orange;
+		
+		font-size: rem-calc(22);
+		
+
+		@media #{$large-up} {
+			font-size: rem-calc(28);
+			padding-top: 24px;
+		}
+	}
+	h5{
+		color:lighten($green,5%);	
+		@media #{$large-up} {
+			font-size: rem-calc(22);
+		}
+	}
+	p{
+		color:lighten($grey, 10%);
+		@media #{$large-up} {
+			font-size: rem-calc(18);
+		}
+	}
 }
 
 #course{
@@ -168,9 +220,8 @@ nav{
 
 #g0v{
 	color:#fff;
-	padding: 0;
 	h2{
-		color:#eee;	
+		color:#fff;
 	}
 	.bg-fire{
 		background-image: url("../img/fire.jpg");
@@ -182,6 +233,12 @@ nav{
 	.bg-project{
 		background-image: url("../img/project.jpg");
 	}
+	h2{
+		color:lighten($orange,3%);
+	}
+	p{
+		color:lighten($grey, 80%);
+	}
 }
 
 #member{
@@ -189,7 +246,7 @@ nav{
 }
 
 #join{
-	background:url('../img/connect.png');
+	
 }
 //---- section bg end---
 
@@ -217,14 +274,6 @@ $line-width: 2px;
 	}
 	p{
 		color: lighten($blue,28%);
-	}
-}
-
-
-.test{
-	li{
-		min-height: 100px;
-		border: 3px grey solid;
 	}
 }
 
@@ -256,6 +305,47 @@ $line-width: 2px;
 
 //----- icon list end-------
 
+// CARD --------
+
+.card{
+	padding:10px 20px;
+	margin-bottom: 30px;
+	@media #{$large-up}{
+		margin-bottom: 0;
+
+	}
+	text-align: center;
+	background:#fff;
+	@include box-shadow( 1px 1px 5px 0 rgba(#000,.2));
+	border-radius: 8px;
+	h4{
+		color: $grey;
+		font-weight: 600;
+		text-align: center;
+	}
+	h5{
+		color: darken($orange, 20%);
+		margin-top: -6px;
+		font-size: rem-calc(14);
+	}
+	i{
+		font-size: rem-calc(120);
+		color: lighten( $orange,3% );
+	}
+	p{
+		text-align: justify;
+		color: #000;
+		font-size: rem-calc(16);
+		color: lighten( $grey,15% );
+		margin:0;
+	}
+	a{
+		color: $blue;
+	}
+}
+
+//--------
+
 // Grade chart
 
 .chart{
@@ -286,30 +376,68 @@ $line-width: 2px;
 	.chart-number{
 		font-size: 24px;
 		display: block;
-		color: darken(#a9e16e,20%);
+		color: lighten($green,10%);	
 	}
-}
-.chart-description{
-	text-align: left;
 }
 
 .chart-title{
+	font-weight: 600;
+	font-size: rem-calc(22);
+	color:lighten($grey,4%);
+
+	@media #{$large-up} {
+		font-size: rem-calc(24);
+	}
+}
+
+.chart-description{
+	@media #{$large-up} {
+		text-align: left;
+		margin-bottom: 0px;
+	}
+	margin-bottom: 68px;
+	
+	.last-one{
+		margin-bottom:0;	
+	}
 }
 
 // ------ person 
 
 .person{
+	
+}
 
+.intro{
+	text-align: center;
+	padding-top:20px;
+	.name{
+		font-size: rem-calc(28);
+		margin-bottom: 0;
+	}
+	.title{
+		color:lighten($grey,45%);
+		font-weight: 300;
+		font-size: rem-calc(18);
+		margin-top: -6px;
+	}
+	.desc{
+		color: lighten( $grey,15% );
+	}
+}
+
+.round-head{
+
+	>img{ border-radius: 50%; }
 }
 
 .head{
-	
 	@include hexagon(240px,240px);
 }
 
 //----------
 
-$button-movement: 2px;
+$button-movement: 3px;
 
 
 // ::after pseudo-element covering the button making sure the click event fires,
@@ -337,7 +465,7 @@ $button-movement: 2px;
 	text-shadow: 0 1px 0px rgba(#000, .15);
 	border-width: 1px 1px 1px+$button-movement;
 	border-style: solid;
-	border-color: darken($primary-color, 20%);
+	border-color: darken($primary-color, 10%);
 	@include border-radius(5px);
 	@include box-shadow(0 -1px 0 rgba(#fff, .1) inset);
 	@include transform(translate3d(0, 0, 0));
@@ -347,4 +475,9 @@ $button-movement: 2px;
 		border-bottom-width: 1px;
 		@include transform(translate3d(0, $button-movement, 0));
 	}
+}
+
+
+footer{
+	background:#474b59;
 }
