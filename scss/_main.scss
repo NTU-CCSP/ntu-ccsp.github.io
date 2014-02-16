@@ -405,7 +405,8 @@ $line-width: 2px;
 // ------ person 
 
 .person{
-	
+	margin: 0 auto;
+	width:100%;
 }
 
 .intro{
@@ -435,8 +436,14 @@ $line-width: 2px;
 	@include hexagon(240px,240px);
 }
 
-//----------
+// Enroll----------
 
+h2.slogan{
+	padding-bottom: 10px;
+}
+
+
+// ---------
 $button-movement: 3px;
 
 
@@ -480,4 +487,10 @@ $button-movement: 3px;
 
 footer{
 	background:#474b59;
+}
+
+// --------
+@keyframes appear{
+		0%{transform:scale(0.5);opacity:0.1}
+		100%{transform:scale(1);opacity:1}
 }

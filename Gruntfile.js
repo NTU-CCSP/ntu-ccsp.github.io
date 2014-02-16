@@ -8,13 +8,13 @@ module.exports = function(grunt) {
         config: 'config/compass.rb'
       },
       dev: {},
-      build: {
-        options: {
-          outputStyle: 'compressed', // Overriding compass.rb
-          noLineComments: true,
-          basePath: 'build'
-        }
-      }
+      // build: {
+      //   options: {
+      //     outputStyle: 'compressed', // Overriding compass.rb
+      //     noLineComments: true,
+      //     basePath: 'build'
+      //   }
+      // }
     },
     connect: {
       server: {
