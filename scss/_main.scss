@@ -231,8 +231,14 @@ nav{
 		background-image: url("../img/fire.jpg");
 	}
 	.section-subtitle{
-		font-size: rem-calc(39);
+		font-size: rem-calc(44);
 		text-align: justify;
+	}
+	span[data-tooltip]{
+		color:$green;
+		&:hover{
+			color:darken($green,14%);
+		}
 	}
 }
 
@@ -246,6 +252,7 @@ nav{
 	}
 	p{
 		color:lighten($grey, 80%);
+		font-size: rem-calc(18);
 	}
 }
 
