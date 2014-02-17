@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 
     compass: {
       options: {
-        config: 'config/compass.rb'
+        config: 'app/compass.rb'
       },
       dev: {},
       build: {
@@ -37,19 +37,19 @@ module.exports = function(grunt) {
         livereload:true
       },
       html:{
-        files: ['index.html']
+        files: ['app/index.html']
       },
       js: {
-        files: ['js/**/*.js'],
+        files: ['app/js/**/*.js'],
       },
       css: {
-        files: ['css/**/*.css']
+        files: ['app/css/**/*.css']
       },
       compass: {
         options:{
           livereload: false
         },
-        files: ['scss/**/*.scss','scss/**/*.sass'],
+        files: ['app/scss/**/*.scss','app/scss/**/*.sass'],
         tasks: ['compass:dev']
       }
     },
@@ -57,7 +57,7 @@ module.exports = function(grunt) {
     //
     copy: {
       build: {
-        src: ['**', '!build', '!Gruntfile.js', '!node_modules/**', '!config/**'],
+        src: ['app/**', 'bower_components/**'],
         dest: 'build',
         expand: true
       }
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
         base: 'build',
         branch: 'master'
       },
-      src: ['*', 'bower_components/**', 'css/**', 'fonts/**', 'img/**', 'js/**']
+      src: ['app/**', 'bower_components/**', '!scss/**']
     }
   });
 

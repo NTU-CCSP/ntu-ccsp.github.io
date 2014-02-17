@@ -5,7 +5,7 @@ fonts_dir = "fonts"
 sass_dir = "scss"
 images_dir = "img"
 javascripts_dir = "js"
-additional_import_paths = ['bower_components/foundation/scss']
+additional_import_paths = ["../bower_components/foundation/scss"]
 
 sass_options = {
   :debug_info => true
