@@ -60,6 +60,8 @@
 	}
 }
 
+
+
 //header---------------------- 
 
 header{
@@ -328,7 +330,6 @@ nav .open{
 		color:lighten($orange,3%);
 	}
 	p{
-		color:lighten($grey, 80%);
 		font-size: rem-calc(18);
 	}
 }
@@ -363,7 +364,12 @@ nav .open{
 
 #where{
 
-	h2,h4{color:#fff;}
+	h2{color:lighten($green,3%);}
+	h4,p{color:#fff;}
+	h4{
+		
+		// text-align: center;
+	}
 	.bg-where{
 		background-image: image-url("class.jpg");
 	}
@@ -527,6 +533,25 @@ $line-width: 2px;
 
 .person{
 	overflow:hidden;
+	margin-top: 40px; 
+}
+
+.prof{
+	.intro{
+
+		.title{
+			margin-top:0;
+		}
+		@media #{$large-up} {
+			text-align: left;	
+		}
+	}
+	.round-head{
+		@media #{$large-up} {
+			margin-right: 0;
+		}
+	}
+
 }
 
 .intro{
@@ -548,7 +573,9 @@ $line-width: 2px;
 }
 
 .round-head{
-
+	width:260px;
+	height:260px;
+	margin: 0 auto;
 	>img{ border-radius: 50%; }
 }
 
@@ -558,6 +585,14 @@ $line-width: 2px;
 
 // person end---------------
 
+
+// disqus-----
+
+#disqus{
+	padding: 60px 0;
+}
+
+// ----------
 
 footer{
 	background:#474b59;
