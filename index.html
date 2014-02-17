@@ -7,6 +7,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.png">
         <link rel="stylesheet" href="fonts/foundation-icons/foundation-icons.css">
         <link rel="stylesheet" href="css/app.css" />
+        <link rel="canonical" href="http://ccsp.ntumobile.org">
         <script src="bower_components/modernizr/modernizr.js"></script>
 
         <meta property="fb:app_id" content="749366138415536" />
@@ -30,7 +31,12 @@
             ga('send', 'pageview');
         </script>
     </head>
-    <body id="ccsp">
+    <body id="ccsp" itemscope itemtype="http://schema.org/WebPage">
+        <meta itemprop="typicalAgeRange" content="19-23">
+        <meta itemprop="interactivityType" content="active">
+        <meta itemprop="timeRequired" content="P5M">
+        <meta itemprop="learningResourceType" content="information">
+        <meta itemprop="intendedEndUserRole" content="student">
         <header>
             <div class="bg-hero"></div>
             <div class="title">
@@ -41,7 +47,7 @@
                 </div>
                 <div class="row">
                     <div class="large-12 column small-centered">
-                        <h1>網路及平台服務程式設計</h1>
+                        <h1 itemprop="name">網路及平台服務程式設計</h1>
                     </div>
                 </div>
             </div>
@@ -85,7 +91,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="small-11 medium-9 small-centered columns">
+                    <div class="small-11 medium-9 small-centered columns" itemprop="description">
                         <h5>我們相信，網路的力量可以改變世界</h5>
                         <p>
                         網路改變了資訊傳遞的想像及人與人之間互動樣貌。只要有一個點子、一台電腦，加上願意捲起袖子的實踐者做出一個網路服務，馬上可以透過無比強大的網路通路，影響到數以萬計的人們。</p>
@@ -156,37 +162,41 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" data-equalizer>
-                    <div class="large-3 small-11 small-centered large-uncentered columns">
+                <div class="row" data-equalizer itemprop="topic">
+                    <div class="large-3 small-11 small-centered large-uncentered columns" itemscope itemtype="http://schema.org/AlignmentObject">
                         <div class="card" data-equalizer-watch>
+                            <meta itemprop="alignmentType" content="teaches">
                             <i class="fi-html5"></i>
-                            <h4>HTML / CSS / JS</h4>
+                            <h4 itemprop="targetName">HTML / CSS / JS</h4>
                             <h5 class="subheader">第二～六周</h5>
-                            <p>網頁前端必學三件套，分別掌管網頁語意架構、表現外觀及互動行為，學習從基礎慢慢搭建出你心目中的網站樣貌！<a href="http://mrorz.github.io/webdev/legacy/index.html">教材</a>以 <a href="https://developer.mozilla.org/en-US/docs/Web">MDN</a> 與 <a href="http://www.w3.org/TR/tr-technology-stds">W3C Spec</a> 作為主要參考資源。</p>
+                            <p itemprop="targetDescription">網頁前端必學三件套，分別掌管網頁語意架構、表現外觀及互動行為，學習從基礎慢慢搭建出你心目中的網站樣貌！<a href="http://mrorz.github.io/webdev/legacy/index.html">教材</a>以 <a href="https://developer.mozilla.org/en-US/docs/Web">MDN</a> 與 <a href="http://www.w3.org/TR/tr-technology-stds" itemprop="targetUrl">W3C Spec</a> 作為主要參考資源。</p>
                         </div>
                     </div>
-                    <div class="large-3 small-11 small-centered large-uncentered columns">
+                    <div class="large-3 small-11 small-centered large-uncentered columns" itemscope itemtype="http://schema.org/AlignmentObject">
                         <div class="card" data-equalizer-watch>
+                            <meta itemprop="alignmentType" content="teaches">
                             <i class="fi-web"></i>
-                            <h4>Node.js / Express</h4>
+                            <h4 itemprop="targetName">Node.js / Express</h4>
                             <h5 class="subheader">第八～十周</h5>
-                            <p><a href="http://nodejs.org/">Node.js</a> 是在網站伺服器端執行的 Javascript 環境；<a href="http://expressjs.com/">Express</a> 則是以輕量、易學著名的 Web 框架，希望大家能用前面逐漸熟悉的 Javascript 打造想要的服務。</p>
+                            <p itemprop="targetDescription"><a href="http://nodejs.org/" itemprop="targetUrl">Node.js</a> 是在網站伺服器端執行的 Javascript 環境；<a href="http://expressjs.com/" itemprop="targetUrl">Express</a> 則是以輕量、易學著名的 Web 框架，希望大家能用前面逐漸熟悉的 Javascript 打造想要的服務。</p>
                         </div>
                     </div>
-                    <div class="large-3 small-11 small-centered large-uncentered columns">
+                    <div class="large-3 small-11 small-centered large-uncentered columns" itemscope itemtype="http://schema.org/AlignmentObject">
                         <div class="card" data-equalizer-watch>
+                            <meta itemprop="alignmentType" content="teaches">
                             <i class="fi-social-github"></i>
-                            <h4>Git / Heroku</h4>
+                            <h4 itemprop="targetName">Git / Heroku</h4>
                             <h5 class="subheader">第十一周</h5>
-                            <p>版本控制系統 git 是程式設計師為程式碼買的保險，也是協同開發不可或缺的道具。最後的網站成品，可以使用 git 部屬到 Heroku，不用費心於繁雜的伺服器安裝與管理。</p>
+                            <p itemprop="targetDescription">版本控制系統 git 是程式設計師為程式碼買的保險，也是協同開發不可或缺的道具。最後的網站成品，可以使用 git 部屬到 Heroku，不用費心於繁雜的伺服器安裝與管理。</p>
                         </div>
                     </div>
-                    <div class="large-3 small-11 small-centered large-uncentered columns omega">
+                    <div class="large-3 small-11 small-centered large-uncentered columns omega" itemscope itemtype="http://schema.org/AlignmentObject">
                         <div class="card" data-equalizer-watch>
+                            <meta itemprop="alignmentType" content="teaches">
                             <i class="fi-widget"></i>
                             <h4>Something More</h4>
                             <h5 class="subheader">至第十五周前</h5>
-                            <p>課堂間會陸續帶到 Ajax / RWD / Twitter Bootstrap 框架 / CSS Preprocessor Sass / NoSQL Database、Parse 與 AWS S3 / Web 資安相關的概念與主題，請大家拭目以待。</p>
+                            <p itemprop="targetDescription">課堂間會陸續帶到 Ajax / RWD / Twitter Bootstrap 框架 / CSS Preprocessor Sass / NoSQL Database、Parse 與 AWS S3 / Web 資安相關的概念與主題，請大家拭目以待。</p>
                         </div>
                     </div>
                 </div>
@@ -303,29 +313,29 @@
                         <h2 class="section-title">Who we are</h2>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" itemscope itemtype="http://schema.org/Person">
                     <div class="medium-4 column text-center">
                         <div class="round-head">
-                            <img src="img/mike.jpg" alt="Mike">
+                            <img src="img/mike.jpg" alt="Mike" itemprop="image">
                         </div>
                     </div>
                     <div class="medium-8 column">
                         <div class="intro">
-                            <h5 class="name"><a href="http://mikechen.com">Prof. 陳彥仰</a></h5>
-                            <p class="title"><a href="http://ntumobile.org">台大資工行動人機介面實驗室</a>指導教授</p>
+                            <h5 class="name" itemprop="name"><a href="http://mikechen.com">Prof. 陳彥仰</a></h5>
+                            <p class="title" itemprop="jobTitle"><a href="http://ntumobile.org">台大資工行動人機介面實驗室</a>指導教授</p>
                             <p>開設〈<a href="http://www.appledaily.com.tw/appledaily/article/headline/20120401/34129445/">行動電話程式設計</a>〉與〈高等人機介面〉等課程，曾任職 Intel Research Seattle 與矽谷 Ludic Labs（後被 Groupon 收購），主要研究領域為行動裝置與人機互動。</p>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="medium-4 small-centered medium-uncentered columns">
-                        <div class="person">
+                        <div class="person" itemscope itemtype="http://schema.org/Person">
                             <div class="head">
-                                <img src="img/johnson.jpg" alt="Johnson">
+                                <img src="img/johnson.jpg" alt="Johnson" itemprop="image">
                             </div>
                             <div class="intro">
-                                <h5 class="name"><a href="http://mrorz.github.io">Johnson</a></h5>
-                                <p class="title">Web Developer @ <a href="http://vuse.tw">VUSE</a></p>
+                                <h5 class="name" itemprop="name"><a href="http://mrorz.github.io">Johnson</a></h5>
+                                <p class="title"><span itemprop="jobTitle">Web Developer</span> @ <a href="http://vuse.tw" itemprop="worksFor">VUSE</a></p>
                                 <p class="desc">
                                     發表一篇 UIST 之後就後繼無力的失敗碩士生，希望能在 Web 維持自己的良好感覺。
                                 </p>
@@ -333,30 +343,30 @@
                         </div>
                     </div>
                     <div class="medium-4 small-centered medium-uncentered columns">
-                        <div class="person">
+                        <div class="person" itemscope itemtype="http://schema.org/Person">
                             <div class="head">
-                                <img src="img/lucien.jpeg" alt="Lucien Lee">
+                                <img src="img/lucien.jpeg" alt="Lucien Lee" itemprop="image">
                             </div>
                             <div class="intro">
-                                <h5 class="name"><a href="">Lucien Lee</a></h5>
-                                <p class="title">Web Designer</p>
+                                <h5 class="name" itemprop="name"><a href="">Lucien Lee</a></h5>
+                                <p class="title" itemprop="jobTitle">Web Designer</p>
                                 <p class="desc">神神神神神神神，神神神神神神神神，神神神，神神神神神神神神神神，神神神神！</p>
                             </div>
                         </div>
                     </div>
                     <div class="medium-4 small-centered medium-uncentered columns">
-                        <div class="person">
+                        <div class="person" itemscope itemtype="http://schema.org/Person">
                             <div class="head">
-                                <img src="img/tomchentw.jpeg" alt="Tom Chen">
+                                <img src="img/tomchentw.jpeg" alt="Tom Chen" itemprop="image">
                             </div>
                             <div class="intro">
-                                <h5 class="name"><a href="https://github.com/tomchentw" target="_blank">Tom Chen</a></h5>
-                                <p class="title">Web Designer</p>
+                                <h5 class="name" itemprop="name"><a href="https://github.com/tomchentw" target="_blank">Tom Chen</a></h5>
+                                <p class="title" itemprop="jobTitle">Web Designer</p>
                                 <p class="desc">To Improve, To Rock, To Change. <br>To Open Source, To Full Stack, To Contribute. <br>That's my own way.</p>
                             </div>
                             <div class="intro">
                                 <h5 class="name"><a href="">Tom Chen</a></h5>
-                                <p class="title">Web Developer</p>
+                                <p class="title" itemprop="jobTitle">Web Developer</p>
                                 <p class="desc">強強強強，強強強強強強強強強強，強強強強強強強強強強，強強強強強強。</p>
                             </div>
                         </div>
@@ -383,7 +393,7 @@
                     </div>
                 </div>
             </div>
-            <div id="where" class="appending"> 
+            <div id="where" class="appending" itemscope itemtype="http://schema.org/EducationEvent">
                 <div class="parallax-wrapper bg-where" data-bgspeed="0.3">
                     <div class="row">
                         <div class="large-push-6 large-6 small-11 small-centered large-uncentered columns">
