@@ -111,7 +111,7 @@ header{
 		position: absolute;
 		width:100%;
 		height: 430px;
-		background-image: url("../img/hero-unit.jpg");
+		background-image: image-url("hero-unit.jpg");
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: top center;
@@ -149,7 +149,6 @@ header{
 // NAV -------------
 
 .nav-wrapper{
-	// display:none;
 	@media #{$large-up}{
 		display:block;
 		position: absolute;
@@ -160,19 +159,22 @@ header{
 }
 
 nav{
-	height: 50px;
-	width: 100%;
-	text-align: center;
-	background: rgba(49,49,49,.2);
-	@include box-shadow( 0px 2px 2px 0px rgba(0, 0, 0, 0.3) );
-
-	@media #{$medium-only} {
-		position: absolute;
-		z-index: 200;
-		width: 100%;		
-		top:0;
-		background: rgba(49,49,49,.95);
+	@media #{$large-up}{
+		background: rgba(49,49,49,.2);
 	}
+	
+	@media #{$medium-up}{
+		height: 50px;
+		width: 100%;
+		text-align: center;
+		@include box-shadow( 0px 2px 2px 0px rgba(0, 0, 0, 0.3) );
+	}
+	position: absolute;
+	z-index: 200;
+	width: 100%;		
+	top:0;
+	background: rgba(49,49,49,.95);
+	
 }
 
 .is-sticky nav{
@@ -180,12 +182,27 @@ nav{
 }
 
 
+
 .sub-nav{
 	display: inline-block;
 	line-height: 50px;
+	
+	@media #{$small-only} {
+		margin: 0;
+		padding:0 ;
+		width:100%;
+		display:none;
+	}
+
 	a{
 		border: $sub-nav-border-size transparent solid;
 		@include transition(color 0.15s ease-in);
+		@media #{ $small-only }{
+			display: block;
+			padding: 0 20px;
+			width:100%;
+
+		}
 	}
 
 	.active a{
@@ -194,14 +211,61 @@ nav{
 		 background-clip: padding-box;	 
 	}
 	
+	ul{
+		@media #{$small-only}{
+			
+		}
+	}
+
+	li{
+		@media #{$small-only}{
+			float:none;
+			display:block;
+			margin:0;
+			width:100%;
+			background: darken($grey, 12%);
+			border-top: 1px solid darken($grey, 18%);
+			text-align: center;
+		}
+	}
 }
 
+$small-height: 40px;
+.small-menu{
+	display:none;
+	list-style: none;
+	padding:0;
+	margin: 0;
+	height: $small-height;
+	.small-title{
+		margin-left: 12px;
+		h2{ 
+			color: #fff; 
+			margin:0;
+			font-family: $str-font;
+			font-size: rem-calc(22);
+			font-weight: 300;
+			line-height: $small-height;
+			vertical-align: middle;
+		}
+	}
+	.menu-icon{
+		font-size: 22px;
+		margin-right: 12px;
+		line-height: $small-height;
+		vertical-align: middle;
+		
+		i{ color: #fff; }
+	}
+}
 
+nav .open{
+	display:block;
+}
 
 //---- section basic set----
 #belief{
-	background:#fff;
-	background:url('../img/connect.png');
+	background:image-url('connect.png');
 	h4{
 		color:$orange;
 		
@@ -241,7 +305,7 @@ nav{
 		color:#fff;
 	}
 	.bg-fire{
-		background-image: url("../img/fire.jpg");
+		background-image: image-url("fire.jpg");
 	}
 	.section-subtitle{
 		font-size: rem-calc(44);
@@ -258,7 +322,7 @@ nav{
 #project{
 	color:#fff;
 	.bg-project{
-		background-image: url("../img/project.jpg");
+		background-image: image-url("project.jpg");
 	}
 	h2{
 		color:lighten($orange,3%);
@@ -270,7 +334,7 @@ nav{
 }
 
 #member{
-	background: url("../img/cubes.png");
+	background: image-url("cubes.png");
 }
 
 #join{
@@ -301,7 +365,7 @@ nav{
 
 	h2,h4{color:#fff;}
 	.bg-where{
-		background-image: url("../img/class.jpg");
+		background-image: image-url("class.jpg");
 	}
 
 }
