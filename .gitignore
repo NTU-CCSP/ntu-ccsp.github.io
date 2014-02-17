@@ -1,7 +1,9 @@
 *.DS_Store
-/css/*
-/bower_components/*
-/node_modules/*
-/.sass-cache
-build
-.grunt
+
+bower_components
+node_modules
+tmp
+
+public/application.css
+public/application.js
+public/index.html

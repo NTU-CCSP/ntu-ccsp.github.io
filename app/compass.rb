@@ -1,11 +1,13 @@
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "css"
-fonts_dir = "fonts"
-sass_dir = "scss"
-images_dir = "img"
-javascripts_dir = "js"
-additional_import_paths = ["../bower_components/foundation/scss"]
+css_dir = "public"
+fonts_dir = "public/fonts"
+sass_dir = "app/scss"
+images_dir = "public/img"
+javascripts_dir = "app/js"
+additional_import_paths = ["bower_components/foundation/scss"]
+
+cache_path = 'tmp/.sass-cache'
 
 sass_options = {
   :debug_info => true
