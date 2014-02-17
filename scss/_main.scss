@@ -4,6 +4,10 @@
 
 // section basic setting -------
 
+section{
+	background: $body-bg;
+}
+
 .section-wrapper{
 	padding:100px 0;
 }
@@ -119,8 +123,10 @@ header{
 		background-position: top center;
 
 		@media #{$large-up} { 
-			background-attachment: fixed;
+			position: fixed;
 			height: 600px;
+			@include translate3d(0,0,0);
+			z-index: -100;
 		}
 	}
 	
@@ -181,6 +187,7 @@ nav{
 
 .is-sticky nav{
 	background: rgba(49,49,49,.95);
+	@include translate3d(0,0,0);
 }
 
 
