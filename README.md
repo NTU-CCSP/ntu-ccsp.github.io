@@ -4,9 +4,12 @@ CCSP Website
 Development
 -----------
 
+We are developing in `dev` branch (and individual feature branches) since `master` branch is used in Github organization page.
+
 To get it running:
 
 ```
+git checkout dev
 npm install
 bower install
 grunt
@@ -14,7 +17,7 @@ grunt
 
 If you get `ECMDERR` when using bower, try running `git config --global url."https://".insteadOf git://` first, as instructed in [an issue of bower](https://github.com/bower/bower/issues/713#issuecomment-27484926).
 
-Push to `gh-pages`
+Push to `master`
 ------------------
 
 The following command will
@@ -23,7 +26,7 @@ The following command will
 1. Copy relevant files into `build/`
 1. Compile sass files again using compressed output style
 1. [TODO] Minify and concatenate javascript
-1. Copy relevant files into a secret directory (.grunt) to be pushed to `gh-pages` branch.
+1. Copy relevant files into a secret directory (.grunt) to be pushed to `master` branch.
 
 ```
 grunt push

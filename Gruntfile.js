@@ -69,7 +69,8 @@ module.exports = function(grunt) {
     },
     'gh-pages': {
       options: {
-        base: 'build'
+        base: 'build',
+        branch: 'master'
       },
       src: ['*', 'bower_components/**', 'css/**', 'fonts/**', 'img/**', 'js/**']
     }

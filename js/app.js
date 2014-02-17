@@ -81,4 +81,11 @@ $(function() {
     $( window ).resize(function() {
 
     });
+
+    // Send ga events when an element with [data-ga] is clicked.
+    $('body').on('click', '[data-ga]', function(e){
+        // console.log( 'GA', $(this).data('ga') );
+        ga('send', 'event', 'button', 'click', $(this).data('ga'));
+    });
 });
+

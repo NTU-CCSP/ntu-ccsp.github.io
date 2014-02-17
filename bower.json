@@ -1,8 +1,29 @@
 {
   "name": "CCSP",
+  "version": "0.0.0",
+  "homepage": "http://ntu-ccsp.github.io/",
+  "authors": [
+    "NTUCCSP <ntuccsp@gmail.com>",
+    "LucienLee <lkiral7903@gmail.com>",
+    "MrOrz <johnsonliang7@gmail.com>",
+    "tomchentw <developer@tomchentw.com>"
+  ],
+  "description": "course official website",
+  "main": "index.html",
+  "keywords": [
+    "CCSP"
+  ],
+  "private": true,
   "dependencies": {
     "foundation": "zurb/bower-foundation",
-	"jquery.easy-pie-chart": "*",
-	"sticky": "*"
-  }
+    "jquery.easy-pie-chart": "*",
+    "sticky": "*"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }
