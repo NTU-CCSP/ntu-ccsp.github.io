@@ -9,6 +9,10 @@ require! {
   connect
   'connect-livereload'
 }
+
+gulp.task 'vendor' ->
+  return gulp.src 'vendor/**/*'
+    .pipe gulp.dest 'public'
 /*
  * dev subtasks
  */
@@ -71,7 +75,7 @@ server.use connect.static './public'
 
 const livereload = tiny-lr!
 
-gulp.task 'dev' <[ dev:html dev:js dev:css ]> !->
+gulp.task 'dev' <[ vendor dev:html dev:js dev:css ]> !->
   server.listen 8000
   livereload.listen 35729
 
@@ -79,5 +83,5 @@ gulp.task 'dev' <[ dev:html dev:js dev:css ]> !->
   gulp.watch 'app/js/*.js' <[ dev:js ]>
   gulp.watch 'app/scss/*.scss' <[ dev:css ]>
 
-gulp.task 'public' <[ dev:html public:js public:css ]> !->
+gulp.task 'public' <[ vendor dev:html public:js public:css ]> !->
   server.listen 8000
