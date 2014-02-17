@@ -2,6 +2,8 @@ $(document).foundation();
 
 var nav_height = 50;
 
+
+
 $(function() {
 
     var small_screen = !matchMedia(Foundation.media_queries['large']).matches;
@@ -54,27 +56,56 @@ $(function() {
         });
     }
 
+    var target = $('.chart');
+    $(window).scroll(function(){
+        if ( $(window).scrollTop() + $(window).height() > target.offset().top + 100) {
+            
+            $('.chart').easyPieChart({
+                lineWidth: 15,
+                size:200,
+                barColor:'#8bdaa2',
+                trackColor:'#f2f2f2',
+                animate:1400,
+                scaleColor: false,
+                lineCap: 'square'
+            });
+        }
+    });
+
+    var target2 = $('.path-icon-list');
+    $(window).scroll(function(){
+        if ( $(window).scrollTop() + $(window).height() > target2.offset().top + 100) {
+            var elements = target2.find('>li');
+            elements.each(function (i) {
+                var element = $(this);
+                setTimeout(function () {
+                    element.addClass('animate');
+                }, (i * 600));
+            });
+        }
+    });
+
+
     $.scrollIt({
         easing: 'easeInOutExpo',
         scrollTime: 700,
         topOffset: 0,
         onPageChange: function(idx){
             var url = "#" + $('[data-scroll-index='+idx+']').attr('id');
-            // console.log('pageChange', url);
             ga('send', 'pageview', url);
         }
     });
 
 
-    $('.chart').easyPieChart({
-        lineWidth: 15,
-        size:200,
-        barColor:'#8bdaa2',
-        trackColor:'#f2f2f2',
-        animate:1200,
-        scaleColor: false,
-        lineCap: 'square'
-    });
+    // $('.chart').easyPieChart({
+    //     lineWidth: 15,
+    //     size:200,
+    //     barColor:'#8bdaa2',
+    //     trackColor:'#f2f2f2',
+    //     animate:1200,
+    //     scaleColor: false,
+    //     lineCap: 'square'
+    // });
 
     
     
@@ -88,4 +119,7 @@ $(function() {
         ga('send', 'event', 'button', 'click', $(this).data('ga'));
     });
 });
+
+
+
 

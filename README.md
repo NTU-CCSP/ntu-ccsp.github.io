@@ -49,6 +49,6 @@ If you wish to browse the website inside `build/`, use `grunt test` in terminal 
 to do
 ------
 
-- pie chart animation
+
 - icon list pop up animation
 - whern windows resize, auto detect js event 

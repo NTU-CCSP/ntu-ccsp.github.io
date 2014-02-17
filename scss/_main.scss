@@ -373,10 +373,7 @@ nav .open{
 
 	h2{color:lighten($green,3%);}
 	h4,p{color:#fff;}
-	h4{
-		
-		// text-align: center;
-	}
+	
 	.bg-where{
 		background-image: image-url("class.jpg");
 	}
@@ -424,7 +421,8 @@ $line-width: 2px;
 	z-index: 5;
 	border-radius: 50%;
 	background: lighten( $orange,10% );
-
+	@include scale(.5);
+	opacity: .1;
 }
 
 .timeline{
@@ -433,6 +431,7 @@ $line-width: 2px;
 	left: $icon-size/2;
 	width: 1px;
 	height: 99%;
+	height: 0%;
 	border-right-width: $line-width;
 	border-right-style: dashed;
 }
@@ -642,9 +641,6 @@ footer{
 	}
 }
 
-.contact{
-	
-}
 
 // button ---------
 $button-movement: 3px;
@@ -697,7 +693,71 @@ $button-movement: 3px;
 // button end---------
 
 // animation list--------
+li.animate .icon-circle{
+	-webkit-animation: appear 0.9s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    -moz-animation: appear 0.9s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    -o-animation: appear 0.9s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    animation: appear 0.9s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    opacity: 1;
+    @include scale(1);;
+}
+
+li.animate .timeline{
+	-webkit-animation: slide_down 1.2s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    -moz-animation: slide_down 1.2s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    -o-animation: slide_down 1.2s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    animation: slide_down 1.2s 1 cubic-bezier(0.175,0.885,0.320,1.275);
+    height: 100%;
+}
+
+
 @keyframes appear{
-		0%{transform:scale(0.5);opacity:0.1}
-		100%{transform:scale(1);opacity:1}
+		0%{@include scale(.5);opacity:0.1}
+		99%{@include scale(1.05);}
+		100%{@include scale(1);opacity:1}
+}
+
+@-webkit-keyframes appear{
+		0%{@include scale(.5);opacity:0.1}
+		99%{@include scale(1.05);}
+		100%{@include scale(1);opacity:1}
+}
+
+@-webkit-keyframes slide_down {
+    0% {
+        height: 0%;
+    }
+    100% {
+        height: 100%;
+    }
+}
+
+@-moz-keyframes slide_down {
+    0% {
+        height: 0%;
+    }
+
+    100% {
+        height: 100%;
+    }
+}
+
+@-o-keyframes slide_down {
+    0% {
+        height: 0%;
+    }
+
+    100% {
+        height: 100%;
+    }
+}
+
+@keyframes slide_down {
+    0% {
+        height: 0%;
+    }
+
+    100% {
+        height: 100%;
+    }
 }
