@@ -589,13 +589,54 @@ $line-width: 2px;
 // disqus-----
 
 #disqus{
-	padding: 60px 0;
+	padding: 60px 0 40px;
 }
 
 // ----------
 
 footer{
 	background:#474b59;
+	color:#fff;
+	
+	text-align: center;
+	@media #{$large-up} {
+		text-align: left;
+	}
+
+	h5{
+		padding-top: 30px;
+		color:lighten( $grey,40%);
+		font-size: rem-calc(28);
+		font-family: $str-font;
+		font-weight: 300;
+	}
+	.email{
+		font-size: rem-calc(20);
+	}
+
+	.copyright{
+		color:lighten( $grey,60%);
+		margin-bottom: 10px;
+		
+	}
+	.creator{
+		font-size: rem-calc(14);
+		color:lighten( $grey,40%);
+	}
+}
+
+.picture-right{
+	
+	ul{ 
+		list-style: none; 
+		@media #{$large-up} {
+			list-style: circle; 
+		}
+	}
+}
+
+.contact{
+	
 }
 
 // button ---------

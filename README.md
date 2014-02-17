@@ -52,4 +52,3 @@ to do
 - pie chart animation
 - icon list pop up animation
 - whern windows resize, auto detect js event 
-- footer
