@@ -682,10 +682,16 @@ $button-movement: 3px;
 	@include transform(translate3d(0, 0, 0));
 	@include transition(border-width .2s, background-color .2s, transform .2s);
 
-	&:active{
+	&:not(.disabled):active{
 		border-bottom-width: 1px;
 		@include transform(translate3d(0, $button-movement, 0));
 	}
+}
+
+.button.disabled, .button.disabled:hover{
+	background-color: lighten($grey,20%);
+	border-color: lighten($grey,12%);
+	opacity:1;
 }
 
 // button end---------
