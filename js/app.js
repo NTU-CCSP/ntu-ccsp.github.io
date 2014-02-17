@@ -44,7 +44,12 @@ $(function() {
     $.scrollIt({
         easing: 'easeInOutExpo',
         scrollTime: 700,
-        topOffset: 0
+        topOffset: 0,
+        onPageChange: function(idx){
+            var url = "#" + $('[data-scroll-index='+idx+']').attr('id');
+            // console.log('pageChange', url);
+            ga('send', 'pageview', url);
+        }
     });
 
 
