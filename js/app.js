@@ -30,7 +30,7 @@ $(function() {
         $.scrollIt({
             easing: 'easeInOutExpo',
             scrollTime: 700,
-            topOffset: nav_height,
+            topOffset: -nav_height,
             onPageChange: function(idx){
                 var url = "#" + $('[data-scroll-index='+idx+']').attr('id');
                 ga('send', 'pageview', url);
@@ -111,7 +111,7 @@ var tasks = function(){
             $.scrollIt({
                 easing: 'easeInOutExpo',
                 scrollTime: 700,
-                topOffset: nav_height,
+                topOffset: -nav_height,
                 onPageChange: function(idx){
                     var url = "#" + $('[data-scroll-index='+idx+']').attr('id');
                     ga('send', 'pageview', url);
