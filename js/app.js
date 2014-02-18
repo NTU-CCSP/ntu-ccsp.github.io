@@ -9,9 +9,6 @@ $(function() {
         tasks();
     });
 
-    $(window).scroll({target: $('.chart')}, pie_chart);
-    $(window).scroll({target: $('.path-icon-list')}, list_animation);
-
     // Send ga events when an element with [data-ga] is clicked.
     $('body').on('click', '[data-ga]', function(e){
         ga('send', 'event', 'button', 'click', $(this).data('ga'));
@@ -45,6 +42,19 @@ var tasks = function(){
 
             $(window).unbind('scroll', parallax_calc);
             $('.parallax-wrapper').removeAttr('style');
+
+            $('.chart').easyPieChart({
+                lineWidth: 15,
+                size:200,
+                barColor:'#8bdaa2',
+                trackColor:'#f2f2f2',
+                animate:1400,
+                scaleColor: false,
+                lineCap: 'square'
+            });
+
+            $('.path-icon-list').find('li').addClass('animate');
+
         }else{
 
             if($('.nav-wrapper').length === 0){
@@ -72,8 +82,8 @@ var tasks = function(){
                 $(window).scroll({section: parallax_section,speed : parallax_speed}, parallax_calc);
             });
 
-            //$(window).scroll({target: $('.chart')},pie_chart);
-            // $(window).scroll({target: $('.path-icon-list')}, list_animation);
+            $(window).scroll({target: $('.chart')},pie_chart);
+            $(window).scroll({target: $('.path-icon-list')}, list_animation);
         }
 };
 
