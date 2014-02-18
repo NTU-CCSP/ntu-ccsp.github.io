@@ -1,8 +1,7 @@
-$(document).foundation();
-
 var nav_height = 50;
 
 $(function() {
+    $(document).foundation();
 
     // init
     var scn = detect_screen();
@@ -60,6 +59,7 @@ $(function() {
         $(window).scroll({target: $('.path-icon-list')}, list_animation);
 
     }
+
 
     $( window ).resize(function() {
         tasks();

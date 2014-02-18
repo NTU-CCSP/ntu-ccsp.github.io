@@ -31,7 +31,7 @@ gulp.task 'dev:js' ->
   return gulp.src <[
       bower_components/modernizr/modernizr.js
       bower_components/jquery/dist/jquery.js
-      bower_components/sticky/jquery.sticky.js
+      app/js/jquery.sticky.js
       app/js/scrollit.min.js
       bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.js
       bower_components/foundation/js/foundation.js
@@ -50,7 +50,7 @@ gulp.task 'public:css' ->
 gulp.task 'public:uglify' ->
   return gulp.src <[
       bower_components/modernizr/modernizr.js
-      bower_components/sticky/jquery.sticky.js
+      app/js/jquery.sticky.js
       app/js/app.js
     ]>
     .pipe gulp-uglify!
