@@ -723,6 +723,18 @@ li.animate .timeline{
 		100%{@include scale(1);opacity:1}
 }
 
+@-moz-keyframes appear{
+		0%{@include scale(.5);opacity:0.1}
+		99%{@include scale(1.05);}
+		100%{@include scale(1);opacity:1}
+}
+
+@-o-keyframes appear{
+		0%{@include scale(.5);opacity:0.1}
+		99%{@include scale(1.05);}
+		100%{@include scale(1);opacity:1}
+}
+
 @-webkit-keyframes slide_down {
     0% {
         height: 0%;

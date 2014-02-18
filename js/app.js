@@ -4,7 +4,53 @@ var nav_height = 50;
 
 $(function() {
 
-    tasks();
+    // init
+    var scn = detect_screen();
+
+    if( scn.mobile ){
+        create_mobile_nav();
+    }
+
+    if( scn.small ){
+        
+        $.scrollIt({
+            easing: 'easeInOutExpo',
+            scrollTime: 700,
+            topOffset: 0,
+            onPageChange: function(idx){
+                var url = "#" + $('[data-scroll-index='+idx+']').attr('id');
+                ga('send', 'pageview', url);
+            }
+        });
+
+        $('.path-icon-list').find('li').addClass('animate');
+
+    }else{
+        $("nav").sticky({topSpacing:0,wrapperClassName:'nav-wrapper'});
+        $.scrollIt({
+            easing: 'easeInOutExpo',
+            scrollTime: 700,
+            topOffset: nav_height,
+            onPageChange: function(idx){
+                var url = "#" + $('[data-scroll-index='+idx+']').attr('id');
+                ga('send', 'pageview', url);
+            }
+        });
+        $('.parallax-wrapper').each(function(){
+            var parallax_section = $(this);
+            var parallax_speed = parseFloat(parallax_section.attr('data-bgspeed'));
+            if( parallax_speed == -1 ){
+                parallax_section.css('background-attachment', 'fixed');
+                parallax_section.css('background-position', 'center center');
+                return;
+            }
+            $(window).scroll({section: parallax_section,speed : parallax_speed}, parallax_calc);
+        });
+        $(window).scroll({target: $('.chart')},pie_chart);
+        $(window).scroll({target: $('.path-icon-list')}, list_animation);
+
+    }
+
     $( window ).resize(function() {
         tasks();
     });
@@ -25,7 +71,7 @@ var tasks = function(){
         }
 
         if( scn.small ){
-            
+            // remove sticky nav
             if($('.nav-wrapper').length > 0 ){
                 $('nav').unstick();
             }
@@ -40,9 +86,11 @@ var tasks = function(){
                 }
             });
 
+            // stop parallax scroll
             $(window).unbind('scroll', parallax_calc);
             $('.parallax-wrapper').removeAttr('style');
 
+            // preload anitmate
             $('.chart').easyPieChart({
                 lineWidth: 15,
                 size:200,
@@ -52,11 +100,10 @@ var tasks = function(){
                 scaleColor: false,
                 lineCap: 'square'
             });
-
             $('.path-icon-list').find('li').addClass('animate');
 
         }else{
-
+            // add sticky nav
             if($('.nav-wrapper').length === 0){
                 $("nav").sticky({topSpacing:0,wrapperClassName:'nav-wrapper'});
             }
@@ -70,7 +117,7 @@ var tasks = function(){
                     ga('send', 'pageview', url);
                 }
             });
-
+            // parallax on
             $('.parallax-wrapper').each(function(){
                 var parallax_section = $(this);
                 var parallax_speed = parseFloat(parallax_section.attr('data-bgspeed'));
@@ -81,7 +128,7 @@ var tasks = function(){
                 }
                 $(window).scroll({section: parallax_section,speed : parallax_speed}, parallax_calc);
             });
-
+            // bind animation event
             $(window).scroll({target: $('.chart')},pie_chart);
             $(window).scroll({target: $('.path-icon-list')}, list_animation);
         }
