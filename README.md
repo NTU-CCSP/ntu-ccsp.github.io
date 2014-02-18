@@ -46,9 +46,3 @@ The latter is derived from [grunt-gh-pages](https://www.npmjs.org/package/grunt-
 If you wish to browse the website inside `build/`, use `grunt test` in terminal to open up the website in `build/` in `http://localhost:8000`.
 
 
-to do
-------
-
-
-- icon list pop up animation
-- whern windows resize, auto detect js event 
