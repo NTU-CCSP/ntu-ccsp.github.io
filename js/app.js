@@ -23,6 +23,16 @@ $(function() {
             }
         });
 
+        $('.chart').easyPieChart({
+            lineWidth: 15,
+            size:200,
+            barColor:'#8bdaa2',
+            trackColor:'#f2f2f2',
+            animate:1400,
+            scaleColor: false,
+            lineCap: 'square'
+        });
+        
         $('.path-icon-list').find('li').addClass('animate');
 
     }else{
