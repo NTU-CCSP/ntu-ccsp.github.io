@@ -10,6 +10,8 @@
 //       It will only set the 'top' and 'position' of your element, you
 //       might need to adjust the width in some cases.
 
+// hack with unstick
+
 (function($) {
   var defaults = {
       topSpacing: 0,
@@ -102,7 +104,27 @@
           });
         });
       },
-      update: scroller
+      update: scroller,
+      unstick: function(options) {
+        return this.each(function() {
+          var unstickyElement = $(this);
+
+          removeIdx = -1;
+          for (var i = 0; i < sticked.length; i++) 
+          {
+            if (sticked[i].stickyElement.get(0) == unstickyElement.get(0))
+            {
+                removeIdx = i;
+            }
+          }
+          if(removeIdx != -1)
+          {
+            sticked.splice(removeIdx,1);
+            unstickyElement.unwrap();
+            unstickyElement.removeAttr('style');
+          }
+        });
+      }
     };
 
   // should be more efficient than using $window.scroll(scroller) and $window.resize(resizer):
@@ -122,6 +144,17 @@
     } else {
       $.error('Method ' + method + ' does not exist on jQuery.sticky');
     }
+  };
+
+  $.fn.unstick = function(method) {
+    if (methods[method]) {
+      return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+    } else if (typeof method === 'object' || !method ) {
+      return methods.unstick.apply( this, arguments );
+    } else {
+      $.error('Method ' + method + ' does not exist on jQuery.sticky');
+    }
+
   };
   $(function() {
     setTimeout(scroller, 0);
