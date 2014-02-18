@@ -5,7 +5,8 @@
   "main": "index.html",
   "scripts": {
     "dev": "gulp dev --require LiveScript",
-    "public": "gulp public --require LiveScript"
+    "public": "gulp public --require LiveScript",
+    "release": "gulp release --require LiveScript"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "gulp-livereload": "~1.1.1",
     "tiny-lr": "~0.0.5",
     "connect": "~2.13.0",
-    "connect-livereload": "~0.3.2"
+    "connect-livereload": "~0.3.2",
+    "temp": "~0.6.0"
   }
 }

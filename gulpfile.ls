@@ -1,5 +1,7 @@
 require! {
   fs
+  path
+  temp
   gulp
   'gulp-exec'
   'gulp-uglify'
@@ -83,5 +85,23 @@ gulp.task 'dev' <[ vendor dev:html dev:js dev:css ]> !->
   gulp.watch 'app/js/*.js' <[ dev:js ]>
   gulp.watch 'app/scss/*.scss' <[ dev:css ]>
 
-gulp.task 'public' <[ vendor dev:html public:js public:css ]> !->
+const buildPublicSubtasks = <[ vendor dev:html public:js public:css ]>
+
+gulp.task 'public' buildPublicSubtasks, !->
   server.listen 8000
+
+gulp.task 'release' buildPublicSubtasks, !(cb) ->
+  temp.mkdir 'ntu-ccsp.github.io' !(err, dirpath) ->
+    gulp.src 'package.json'
+      .pipe gulp-exec "cp -r public/* #{ dirpath }"
+      .on 'end' cpToMaster.bind(@, dirpath)
+
+  !function cpToMaster (dirpath)
+    gulp.src 'package.json'
+      .pipe gulp-exec 'git checkout master'
+      .pipe gulp-exec 'git clean -f -d'
+      .pipe gulp-exec 'git rm -rf .'
+      .pipe gulp-exec "cp -r #{ path.join dirpath, '*' } ."
+      .pipe gulp-exec "rm -rf #{ dirpath }"
+      .pipe gulp-exec 'git add -A'
+      .pipe gulp-exec "git commit -m 'chore(release): by gulpfile'"
