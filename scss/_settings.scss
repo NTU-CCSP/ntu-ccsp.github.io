@@ -769,20 +769,23 @@ $primary-color: $green;
 
 // We use these to control the background and border styles
 // $panel-bg: scale-color(#fff, $lightness: -5%);
-// $panel-border-style: solid;
-// $panel-border-size: 1px;
+$panel-bg: #555;
+$panel-border-style: solid;
+$panel-border-size: 1px 0 1px;
 
 // We use this % to control how much we darken things on hover
 // $panel-function-factor: -11%;
+// WTF $panel-border-color is not used inside _panels.scss at all!!
 // $panel-border-color: scale-color($panel-bg, $lightness: $panel-function-factor);
+// $panel-border-color: darken($panel-bg, 20%) $panel-bg lighten($panel-bg, 15%);
 
 // We use these to set default inner padding and bottom margin
-// $panel-margin-bottom: rem-calc(20);
-// $panel-padding: rem-calc(20);
+// $panel-margin-bottom: 1rem * $base-line-height / 100%;
+$panel-padding: 2rem * $base-line-height / 100%;
 
 // We use these to set default font colors
-// $panel-font-color: #333;
-// $panel-font-color-alt: #fff;
+$panel-font-color-alt: #fff;
+$panel-font-color: #fff;
 
 // $panel-header-adjust: true;
 // $callout-panel-link-color: $primary-color;
