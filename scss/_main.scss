@@ -298,6 +298,17 @@ nav .open{
 			font-size: rem-calc(18);
 		}
 	}
+	.panel{
+		margin: 2.5rem * $base-line-height/100% 0 0;
+		border-width: 1px 0 1px;
+		border-style: solid;
+		border-color: darken($panel-bg, 15%) transparent lighten($panel-bg, 20%);
+		@include box-shadow(inset 0 10px 25px rgba(#000, .15));
+		@include border-radius(8px);
+		p{
+			color: $panel-font-color;
+		}
+	}
 }
 
 #course{
