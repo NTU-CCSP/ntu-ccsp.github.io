@@ -379,6 +379,14 @@ nav .open{
 	}
 
 }
+
+#faq{
+	background: image-url('stardust.png');
+
+	h2,h3,p{color:#fff;}
+
+}
+
 //---- section bg end---
 
 
@@ -590,6 +598,22 @@ $line-width: 2px;
 }
 
 // person end---------------
+
+// FAQ----------
+
+.question{
+	
+	margin-bottom: rem-calc(40);
+	h3{
+		font-size: rem-calc(28);
+	}
+
+	em{
+		color:lighten($orange, 3%);
+	}
+}
+
+// FAQ end------
 
 
 // disqus-----

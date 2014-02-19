@@ -32,7 +32,7 @@ $(function() {
             scaleColor: false,
             lineCap: 'square'
         });
-        
+
         $('.path-icon-list').find('li').addClass('animate');
 
     }else{
@@ -97,7 +97,7 @@ var tasks = function(){
             });
 
             // stop parallax scroll
-            $(window).unbind('scroll', parallax_calc);
+            $(window).off('scroll', parallax_calc);
             $('.parallax-wrapper').removeAttr('style');
 
             // preload anitmate
