@@ -91,17 +91,14 @@ gulp.task 'public' buildPublicSubtasks, !->
   server.listen 8000
 
 gulp.task 'release' buildPublicSubtasks, !(cb) ->
-  temp.mkdir 'ntu-ccsp.github.io' !(err, dirpath) ->
-    gulp.src 'package.json'
-      .pipe gulp-exec "cp -r public/* #{ dirpath }"
-      .on 'end' cpToMaster.bind(@, dirpath)
-
-  !function cpToMaster (dirpath)
-    gulp.src 'package.json'
-      .pipe gulp-exec 'git checkout master'
-      .pipe gulp-exec 'git clean -f -d'
-      .pipe gulp-exec 'git rm -rf .'
-      .pipe gulp-exec "cp -r #{ path.join dirpath, '*' } ."
-      .pipe gulp-exec "rm -rf #{ dirpath }"
-      .pipe gulp-exec 'git add -A'
-      .pipe gulp-exec "git commit -m 'chore(release): by gulpfile'"
+  (err, dirpath) <-! temp.mkdir 'ntu-ccsp.github.io'
+  gulp.src 'package.json'
+    .pipe gulp-exec "cp -r public/* #{ dirpath }"
+    .pipe gulp-exec 'git checkout master'
+    .pipe gulp-exec 'git clean -f -d'
+    .pipe gulp-exec 'git rm -rf .'
+    .pipe gulp-exec "cp -r #{ path.join dirpath, '*' } ."
+    .pipe gulp-exec "rm -rf #{ dirpath }"
+    .pipe gulp-exec 'git add -A'
+    .pipe gulp-exec "git commit -m 'chore(release): by gulpfile'"
+    .pipe gulp-exec "git push origin master"
