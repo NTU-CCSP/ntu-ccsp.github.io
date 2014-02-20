@@ -304,6 +304,7 @@ nav .open{
 	}
 	.panel{
 		margin: 2.5rem * $base-line-height/100% 0 0;
+		padding:2rem;
 		border-width: 1px 0 1px;
 		border-style: solid;
 		border-color: darken($panel-bg, 15%) transparent lighten($panel-bg, 20%);
@@ -311,6 +312,7 @@ nav .open{
 		@include border-radius(8px);
 		p{
 			color: $panel-font-color;
+			text-align: center;
 		}
 	}
 }
