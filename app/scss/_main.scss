@@ -397,7 +397,7 @@ nav .open{
 
 }
 
-#faq{
+#faq, #extend{
 	background: image-url('stardust.png');
 
 	h2,h3,p{color:#fff;}
@@ -681,6 +681,15 @@ footer{
 		}
 	}
 }
+
+
+
+// table---------
+
+#ccsp th, #ccsp td{
+	text-align: center;
+}
+
 
 
 // button ---------

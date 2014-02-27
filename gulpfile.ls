@@ -19,8 +19,9 @@ gulp.task 'vendor' ->
  * dev subtasks
  */
 gulp.task 'dev:html' ->
-  return gulp.src 'app/index.html'
+  return gulp.src 'app/*.html'
     .pipe gulp.dest 'public'
+    .pipe gulp-livereload(livereload)
 
 gulp.task 'dev:css' ->
   return gulp.src 'app/scss/application.scss'
@@ -40,6 +41,21 @@ gulp.task 'dev:js' ->
     .pipe gulp-concat 'application.js'
     .pipe gulp.dest 'public'
     .pipe gulp-livereload(livereload)
+
+gulp.task 'dev:js:schedule' ->
+  return gulp.src <[
+      bower_components/modernizr/modernizr.js
+      bower_components/jquery/dist/jquery.js
+      app/js/jquery.sticky.js
+      app/js/scrollit.min.js
+      bower_components/foundation/js/foundation.js
+      app/js/app-s.js
+    ]>
+    .pipe gulp-concat 'sys.js'
+    .pipe gulp.dest 'public'
+    .pipe gulp-livereload(livereload)
+
+
 /*
  * public subtasks
  */
@@ -77,7 +93,7 @@ server.use connect.static './public'
 
 const livereload = tiny-lr!
 
-gulp.task 'dev' <[ vendor dev:html dev:js dev:css ]> !->
+gulp.task 'dev' <[ vendor dev:html dev:js dev:js:schedule dev:css ]> !->
   server.listen 8000
   livereload.listen 35729
 
