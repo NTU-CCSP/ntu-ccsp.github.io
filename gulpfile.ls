@@ -28,7 +28,7 @@ gulp.task 'dev:css' ->
   .pipe gulp-exec('compass compile --force')
   .pipe gulp-livereload(livereload)
 
-gulp.task 'dev:js' ->
+gulp.task 'dev:js:common' ->
   return gulp.src <[
     bower_components/modernizr/modernizr.js
     bower_components/jquery/dist/jquery.js
@@ -36,26 +36,28 @@ gulp.task 'dev:js' ->
     app/js/scrollit.min.js
     bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.js
     bower_components/foundation/js/foundation.js
-    app/js/app.js
   ]>
-  .pipe gulp-concat 'application.js'
+  .pipe gulp-concat 'common.js'
   .pipe gulp.dest 'public'
   .pipe gulp-livereload(livereload)
 
-gulp.task 'dev:js:schedule' ->
+gulp.task 'dev:js:index' <[ dev:js:common ]> ->
   return gulp.src <[
-    bower_components/modernizr/modernizr.js
-    bower_components/jquery/dist/jquery.js
-    app/js/jquery.sticky.js
-    app/js/scrollit.min.js
-    bower_components/foundation/js/foundation.js
+    app/js/app.js
+  ]>
+  .pipe gulp-concat 'index.js'
+  .pipe gulp.dest 'public'
+  .pipe gulp-livereload(livereload)
+
+gulp.task 'dev:js:syllabus' <[ dev:js:common ]> ->
+  return gulp.src <[
     app/js/app-s.js
   ]>
   .pipe gulp-concat 'sys.js'
   .pipe gulp.dest 'public'
   .pipe gulp-livereload(livereload)
 
-
+gulp.task 'dev:js' <[ dev:js:index dev:js:syllabus ]>
 /*
  * public subtasks
  */
@@ -68,11 +70,12 @@ gulp.task 'public:uglify' ->
     bower_components/modernizr/modernizr.js
     app/js/jquery.sticky.js
     app/js/app.js
+    app/js/app-s.js
   ]>
   .pipe gulp-uglify!
   .pipe gulp.dest 'tmp'
 
-gulp.task 'public:js' <[ public:uglify ]> ->
+gulp.task 'public:js:common' <[ public:uglify ]> ->
   return gulp.src <[
     tmp/modernizr.js
     bower_components/jquery/dist/jquery.min.js
@@ -80,10 +83,23 @@ gulp.task 'public:js' <[ public:uglify ]> ->
     app/js/scrollit.min.js
     bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js
     bower_components/foundation/js/foundation.min.js
+  ]>
+  .pipe gulp-concat 'common.js'
+  .pipe gulp.dest 'public'
+
+gulp.task 'public:js:index' <[ public:js:common ]> ->
+  return gulp.src <[
     tmp/app.js
   ]>
-  .pipe gulp-concat 'application.js'
   .pipe gulp.dest 'public'
+
+gulp.task 'public:js:syllabus' <[ public:js:common ]> ->
+  return gulp.src <[
+    tmp/app-s.js
+  ]>
+  .pipe gulp.dest 'public'
+
+gulp.task 'public:js' <[ public:js:index public:js:syllabus ]>
 /*
  * for npm scripts
  */
@@ -93,7 +109,7 @@ server.use connect.static './public'
 
 const livereload = tiny-lr!
 
-gulp.task 'dev' <[ vendor dev:html dev:js dev:js:schedule dev:css ]> !->
+gulp.task 'dev' <[ vendor dev:html dev:js dev:css ]> !->
   server.listen 8000
   livereload.listen 35729
 
