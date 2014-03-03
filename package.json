@@ -4,6 +4,7 @@
   "description": "course official website",
   "main": "index.html",
   "scripts": {
+    "postinstall": "bower install",
     "dev": "gulp dev --require LiveScript",
     "public": "gulp public --require LiveScript",
     "release": "gulp release --require LiveScript"
