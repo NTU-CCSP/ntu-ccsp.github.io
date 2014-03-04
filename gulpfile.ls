@@ -119,7 +119,7 @@ gulp.task 'dev' <[ vendor dev:html dev:js dev:css ]> !->
   server.listen 8000
   livereload.listen 35729
 
-  gulp.watch 'app/*.html' <[ dev:html ]>
+  gulp.watch 'app/*.jade' <[ dev:html ]>
   gulp.watch 'app/js/*.js' <[ dev:js ]>
   gulp.watch 'app/scss/*.scss' <[ dev:css ]>
 
