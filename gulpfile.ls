@@ -140,7 +140,7 @@ gulp.task 'release' buildPublicSubtasks, !(cb) ->
   .pipe gulp-exec "rm -rf #{ dirpath }"
   .pipe gulp-exec 'git add -A'
   .pipe gulp-exec "git commit -m 'chore(release): by gulpfile'"
-  .pipe gulp-exec "git push origin master --force"
+  .pipe gulp-exec "git push --all"
   .pipe gulp-exec "git checkout dev"
   .pipe gulp-exec "npm install"
   .on 'end' cb
