@@ -3,6 +3,7 @@ require! {
   path
   temp
   gulp
+  'gulp-jade'
   'gulp-exec'
   'gulp-uglify'
   'gulp-concat'
@@ -19,7 +20,8 @@ gulp.task 'vendor' ->
  * dev subtasks
  */
 gulp.task 'dev:html' ->
-  return gulp.src 'app/*.html'
+  return gulp.src 'app/*.jade'
+  .pipe gulp-jade pretty: true
   .pipe gulp.dest 'public'
   .pipe gulp-livereload(livereload)
 
@@ -43,17 +45,15 @@ gulp.task 'dev:js:common' ->
 
 gulp.task 'dev:js:index' <[ dev:js:common ]> ->
   return gulp.src <[
-    app/js/app.js
+    app/js/index.js
   ]>
-  .pipe gulp-concat 'index.js'
   .pipe gulp.dest 'public'
   .pipe gulp-livereload(livereload)
 
 gulp.task 'dev:js:syllabus' <[ dev:js:common ]> ->
   return gulp.src <[
-    app/js/app-s.js
+    app/js/syllabus.js
   ]>
-  .pipe gulp-concat 'sys.js'
   .pipe gulp.dest 'public'
   .pipe gulp-livereload(livereload)
 
@@ -61,6 +61,12 @@ gulp.task 'dev:js' <[ dev:js:index dev:js:syllabus ]>
 /*
  * public subtasks
  */
+gulp.task 'public:html' ->
+  return gulp.src 'app/*.jade'
+  .pipe gulp-jade pretty: false
+  .pipe gulp.dest 'public'
+  .pipe gulp-livereload(livereload)
+
 gulp.task 'public:css' ->
   return gulp.src 'app/scss/application.scss'
   .pipe gulp-exec('compass compile --output-style compressed --force')
@@ -69,8 +75,8 @@ gulp.task 'public:uglify' ->
   return gulp.src <[
     bower_components/modernizr/modernizr.js
     app/js/jquery.sticky.js
-    app/js/app.js
-    app/js/app-s.js
+    app/js/index.js
+    app/js/syllabus.js
   ]>
   .pipe gulp-uglify!
   .pipe gulp.dest 'tmp'
@@ -89,13 +95,13 @@ gulp.task 'public:js:common' <[ public:uglify ]> ->
 
 gulp.task 'public:js:index' <[ public:js:common ]> ->
   return gulp.src <[
-    tmp/app.js
+    tmp/index.js
   ]>
   .pipe gulp.dest 'public'
 
 gulp.task 'public:js:syllabus' <[ public:js:common ]> ->
   return gulp.src <[
-    tmp/app-s.js
+    tmp/syllabus.js
   ]>
   .pipe gulp.dest 'public'
 
@@ -117,7 +123,7 @@ gulp.task 'dev' <[ vendor dev:html dev:js dev:css ]> !->
   gulp.watch 'app/js/*.js' <[ dev:js ]>
   gulp.watch 'app/scss/*.scss' <[ dev:css ]>
 
-const buildPublicSubtasks = <[ vendor dev:html public:js public:css ]>
+const buildPublicSubtasks = <[ vendor public:html public:js public:css ]>
 
 gulp.task 'public' buildPublicSubtasks, !->
   server.listen 8000

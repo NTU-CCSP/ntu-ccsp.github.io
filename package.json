@@ -28,16 +28,16 @@
   "homepage": "https://github.com/NTU-CCSP/ntu-ccsp.github.io",
   "dependencies": {},
   "devDependencies": {
-    "LiveScript": "~1.2.0",
-    "gulp": "~3.5.2",
-    "gulp-livescript": "~0.1.2",
-    "gulp-exec": "~1.0.4",
-    "gulp-concat": "~2.1.7",
-    "gulp-uglify": "~0.2.1",
-    "gulp-livereload": "~1.1.1",
-    "tiny-lr": "~0.0.5",
-    "connect": "~2.13.0",
-    "connect-livereload": "~0.3.2",
-    "temp": "~0.6.0"
+    "LiveScript": "^1.2.0",
+    "gulp": "^3.5.2",
+    "gulp-jade": "^0.4.2",
+    "gulp-exec": "^1.0.4",
+    "gulp-concat": "^2.1.7",
+    "gulp-uglify": "^0.2.1",
+    "gulp-livereload": "^1.1.1",
+    "tiny-lr": "^0.0.5",
+    "connect": "^2.13.0",
+    "connect-livereload": "^0.3.2",
+    "temp": "^0.6.0"
   }
 }
