@@ -16,6 +16,7 @@
   "private": true,
   "dependencies": {
     "foundation": "zurb/bower-foundation",
+    "foundation": "5.1.1",
     "jquery.easy-pie-chart": "*"
   },
   "ignore": [
