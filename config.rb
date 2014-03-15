@@ -1,10 +1,14 @@
 # Set this to the root of your project when deployed:
-http_path = "/"
-css_dir = "public"
-fonts_dir = "public/fonts"
-sass_dir = "app/scss"
+javascripts_dir = "client/javascripts"
+sass_dir = "client/stylesheets"
+css_dir = "tmp/public"
 images_dir = "public/img"
-javascripts_dir = "app/js"
+fonts_dir = "public/fonts"
+
+http_path = "/"
+http_images_path = "/img"
+http_fonts_path = "/fonts"
+
 additional_import_paths = ["bower_components/foundation/scss"]
 
 cache_path = 'tmp/.sass-cache'
@@ -20,7 +24,7 @@ sass_options = {
 output_style = :expanded
 
 # To enable relative paths to assets via compass helper functions. Uncomment:
-relative_assets = true
+relative_assets = false
 
 # To disable debugging comments that display the original location of your selectors. Uncomment:
 line_comments = true

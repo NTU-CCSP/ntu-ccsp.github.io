@@ -9,21 +9,14 @@
     "tomchentw <developer@tomchentw.com>"
   ],
   "description": "course official website",
-  "main": "index.html",
+  "main": "index.ls",
   "keywords": [
     "CCSP"
   ],
   "private": true,
-  "dependencies": {
+  "devDependencies": {
     "foundation": "zurb/bower-foundation",
     "foundation": "5.1.1",
     "jquery.easy-pie-chart": "*"
-  },
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+  }
 }

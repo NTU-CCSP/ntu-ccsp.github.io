@@ -1,8 +1,47 @@
-*.DS_Store
+# Created by bundle gem [NAME]
 
-bower_components
-node_modules
+### Bundler ###
+*.gem
+*.rbc
+.bundle
+.config
+.yardoc
+Gemfile.lock
+InstalledFiles
+_yardoc
+coverage
+doc/
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
 tmp
+### Bundler End ###
 
-public
-.sass-cache/
+# Created by http://gitignore.io
+
+### Node ###
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+pids
+logs
+results
+
+npm-debug.log
+node_modules
+### Node End ###
+
+# Manually Created
+
+### Bower ###
+bower_components
+### Bower End ###
