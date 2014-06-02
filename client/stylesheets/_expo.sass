@@ -1,6 +1,21 @@
+@import compass/utilities/text/ellipsis
+
 #expo
   // Expo CSS
   // color: red
+
+  h1
+    color: $blue
+    font-size: rem-calc(20)
+    margin-top: rem-calc(20)
+
+  .desc
+    height: 1.5em
+    +ellipsis
+
+  .github, .web
+    height: 1.5em
+    +ellipsis
 
 .expo-modal
   // Expo modal dialog CSS
