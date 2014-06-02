@@ -43,22 +43,23 @@ html
     header
       h1 lalalla
     section#expo
-      .row: .small-12.column: ul.large-block-grid-5.medium-block-grid-3
+      .row: .small-12.column: ul.large-block-grid-4.medium-block-grid-3
         each row in entry
-          li
+          li: .expo-brief
+            figure.logo
+              a.model-url(href='#'+row["gsx$期末專案名稱"]["$t"].replace(/\s/g, '-'))
+                img(src=row["gsx$logo連結1200x1200pixel"]["$t"])
+              a.origin-url(href=row["gsx$網站網址"]["$t"])
+                i.fi-link
             a(href='#'+row["gsx$期末專案名稱"]["$t"].replace(/\s/g, '-'))
-              img.logo(src=row["gsx$logo連結1200x1200pixel"]["$t"])
               h1= row["gsx$期末專案名稱"]["$t"]
 
-            ul.inline-list
-              li.web: a(href=row["gsx$網站網址"]["$t"])
-                i.fi-web
-                |  網站
+
+            p.desc= row["gsx$作品描述"]["$t"]
+            ul.meta-list
               li.github: a(href=row["gsx$專案githubrepository網址"]["$t"])
                 i.fi-social-github
-                | &nbsp;
-                = row["gsx$專案githubrepository網址"]["$t"].replace('https://github.com/', '')
-            p.desc= row["gsx$作品描述"]["$t"]
+                span= row["gsx$專案githubrepository網址"]["$t"].replace('https://github.com/', '')
 
     each row in entry
       div.medium.reveal-modal.expo-modal(id='modal-'+row["gsx$期末專案名稱"]["$t"].replace(/\s/g, '-') data-reveal)

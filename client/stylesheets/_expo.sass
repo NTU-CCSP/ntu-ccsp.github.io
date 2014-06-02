@@ -1,22 +1,102 @@
-@import compass/utilities/text/ellipsis
+@import compass/utilities
+@import compass/typography
+
+=fade-ellipsis($line, $line-hight, $bgcolcor)
+	position: relative
+	overflow: hidden
+	height: $line-hight * $line /* exactly three lines */
+
+	&:after
+		content: ""
+		text-align: right
+		position: absolute
+		bottom: 0
+		right: 0
+		width: 30%
+		height: $line-hight
+		background: linear-gradient(to right, rgba(255, 255, 255, 0), $bgcolcor 100%)
+		pointer-events: none
 
 #expo
-  // Expo CSS
-  // color: red
+	background: image-url('zigzag.png')
 
-  h1
-    color: $blue
-    font-size: rem-calc(20)
-    margin-top: rem-calc(20)
+.expo-brief
+	height: 100%
+	background: #292929
 
-  .desc
-    height: 1.5em
-    +ellipsis
+	.origin-url
+		display: block
+		position: absolute
+		top: 50%
+		left: 50%
+		margin: -21px 0 0 -21px
+		font-size: rem-calc(42)
+		visibility: hidden
+		opacity: 0
+		color: scale-color( $orange, $lightness: 0%, $saturation: -80%)
 
-  .github, .web
-    height: 1.5em
-    +ellipsis
+		&:hover
+			color: scale-color( $orange, $lightness: 30%, $saturation: -32%)
+	
+
+	.logo
+		position: relative
+		padding: 0
+		margin: 0
+		+transition( all .25s linear )
+
+		&:hover
+			background: #343434
+			
+			img
+				opacity: .7
+			
+			.origin-url
+				visibility: visible
+				opacity: 1
+
+		
+		img
+			+transition( all .25s linear )
+			background: #fff
+
+
+	h1
+		font-size: rem-calc(20)
+		margin-top: rem-calc(12)
+		margin-left: rem-calc(12)
+		color: #fff
+
+	.desc
+		height: 1.5em
+		+fade-ellipsis(3, 1.6em, #292929)
+		+trailer(2)
+		margin-left: rem-calc(12)
+		margin-right: rem-calc(12)
+		color: #b9bdc0
+	
+	.meta-list
+		height: rem-calc(54)
+		background: lighten(#2e2e2e,3%)
+		margin-left: 0
+		padding-left: rem-calc(12)
+		padding-right: rem-calc(12)
+
+		li
+			height: 100%
+
+
+	.github
+		+ellipsis
+		i
+			display: inline-block
+			margin-top: 2px
+			line-height: rem-calc(54)
+			font-size: rem-calc(42)
+			vertical-align: middle
+		
+		span
+			margin-left: rem-calc(12)
 
 .expo-modal
-  // Expo modal dialog CSS
-  // color: blue
+
