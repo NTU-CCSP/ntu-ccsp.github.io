@@ -46,7 +46,7 @@ html
       .row: .small-12.column: ul.large-block-grid-5.medium-block-grid-3
         each row in entry
           li
-            a(href='#'+row["gsx$期末專案名稱"]["$t"])
+            a(href='#'+row["gsx$期末專案名稱"]["$t"].replace(/\s/g, '-'))
               img.logo(src=row["gsx$logo連結1200x1200pixel"]["$t"])
               h1= row["gsx$期末專案名稱"]["$t"]
 
@@ -60,7 +60,7 @@ html
             p.desc= row["gsx$作品描述"]["$t"]
 
     each row in entry
-      div.medium.reveal-modal.expo-modal(id='modal-'+row["gsx$期末專案名稱"]["$t"] data-reveal)
+      div.medium.reveal-modal.expo-modal(id='modal-'+row["gsx$期末專案名稱"]["$t"].replace(/\s/g, '-') data-reveal)
         a.close-reveal-modal &#215;
         .row
           .large-4.column
