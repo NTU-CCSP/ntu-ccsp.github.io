@@ -46,8 +46,9 @@ html
       .row: .small-12.column: ul.large-block-grid-5.medium-block-grid-3
         each val in new Array(25)
           li
-            img.logo(src="http://placekitten.com/400/400")
-            h1 我食故我在
+            a(href='#我食故我在')
+              img.logo(src="http://placekitten.com/400/400")
+              h1 我食故我在
 
             ul.inline-list
               li.web: a(href="http://google.com")
@@ -59,5 +60,21 @@ html
 
             p.desc 所以我們才會將所得稅的稅率從6%降至5%；13%降至12%；21%降至20%，地方政府大概是負責三分之一，我們很實際，這是經濟委員會對經濟部的要求。想得比天地還要重，被誰給偷走，不是，好想你我好想你，每一天，我不怕千萬人阻擋
 
+    div.medium.reveal-modal(id="modal-我食故我在" data-reveal)
+      a.close-reveal-modal &#215;
+      .row
+        .large-4.column
+          img.logo(src="http://placekitten.com/400/400")
+        .large-8.column
+          h1 我食故我在
+          ul.inline-list
+            li.web: a(href="http://google.com")
+              i.fi-web
+              |  網站
+            li.github: a(href="http://github.com")
+              i.fi-social-github
+              |  NTU-CCSP/CCSP
+          p.desc 所以我們才會將所得稅的稅率從6%降至5%；13%降至12%；21%降至20%，地方政府大概是負責三分之一，我們很實際，這是經濟委員會對經濟部的要求。想得比天地還要重，被誰給偷走，不是，好想你我好想你，每一天，我不怕千萬人阻擋
+
     script(src="/common.js")
-    script(src="/syllabus.js")
+    script(src="/expo.js")
