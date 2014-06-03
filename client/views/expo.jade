@@ -25,24 +25,34 @@ html
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-19512059-6', 'ntumobile.org');
       ga('send', 'pageview');
-  body#ccsp
-    //- nav
-    //-   ul.small-menu.clearfix
-    //-     li.small-title.left
-    //-       h2 CCSP
-    //-     li.menu-icon.right
-    //-       a(href="")
-    //-         i.fi-list
-    //-   ul.sub-nav
-    //-     li(data-scroll-nav="0")
-    //-       a(href="#belief") Slides
-    //-     li(data-scroll-nav="1")
-    //-       a(href="#course") Extended Reading
-    //-     li(data-scroll-nav="2")
-    //-       a(href="#grade") TA Hours
-    header
-      h1 lalalla
-    section#expo
+  body#expo
+    
+    header#expo-show.push-animation
+      .title
+        h1.eng
+          span C
+          | loud&nbsp
+          span C
+          | omputing-Based&nbsp
+          span S
+          | ervices Design and&nbsp
+          span P
+          | rogramming&nbsp
+          span.special Expo
+        h1 網路及平台服務程式設計成果展
+        .row
+          .small-12.medium-6.columns: h3.time 2014.06.05 11:30 ~ 14:30
+          .small-12.medium-6.columns: h3.location 台灣大學德田館 1F
+      .bg-media: img(src='img/ccsp-sample-header.jpg')
+    
+    section#project-list
+
+      section.expo-intro
+        .row: .small-12.column
+          h1 網路及平台服務程式設計成果展
+          h2.subtitle 一同見證社會改變的發生！
+          p.introduction 76 位學生一同經歷了 15 週的課程，從零開始學習開發網頁服務，經歷從點子發想、前端開發、後端開發至服務部屬的訓練。並在課程中參與 g0v x CCSP 黑客松，嘗試自己動手解決看見的問題，提出自己解決方案的原型。然而黑客松只是一個開始，學員們帶著黑客松的成果與回饋，回去繼續開發改進，將他們的作品變得更好更完整。讓我們來一同見證大家努力的結果吧！
+
       .row: .small-12.column: ul.large-block-grid-4.medium-block-grid-3
         each row in entry
           li: .expo-brief
@@ -77,6 +87,21 @@ html
                 i.fi-social-github
                 = row["gsx$專案githubrepository網址"]["$t"].replace('https://github.com/', '')
             p.desc= row["gsx$作品描述"]["$t"]
+
+    footer.expo-footer
+      .row
+        .small-11.small-centered.large-6.large-uncentered.column
+          a(href="mailto:ntuccsp@gmail.com"): h5.contact Contact Us
+        .small-11.small-centered.large-6.large-uncentered.column.picture-right.omega
+          a(href="http//:ccsp.ntumobile.org"): h5.website Our Website
+      .row
+        .small-12.small-centered.column.text-center
+          p.copyright Copyright © 2014 CCSP, NTU Mobile HCI Lab
+          p.creator
+            | Web developed and designed by 
+            a(href="https://www.facebook.com/lucien.leee") Lucien Lee
+            | , optimized and Logo designed by 
+            a(href="http://mrorz.github.io/")  Johnson
 
     script(src="/common.js")
     script(src="/expo.js")
