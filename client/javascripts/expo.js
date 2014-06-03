@@ -36,8 +36,9 @@
     window.onhashchange = router;
     router();
 
-    // --------------------------
+    /* ----------- Animation Code---------------*/
 
+    //ie detect
     var ie = (function() {
         var undef, rv = -1; // Return value assumes failure.
         var ua = window.navigator.userAgent;
@@ -56,12 +57,102 @@
         return ((rv > -1) ? rv : undef);
     }());
 
-    var docElem = window.document.documentElement;
+    // disable/enable scroll
+    var keys = [32, 37, 38, 39, 40];
 
-    function scrollY() {
+    function keydown(e) {
+        for (var i = keys.length; i--;) {
+            if (e.keyCode === keys[i]) {
+                e.preventDefault();
+                return;
+            }
+        }
+    }
+
+    function touchmove(e) {
+        // e.preventDefault();
+    }
+
+    function wheel(e) {
+        // e.preventDefault();
+    }
+
+    function disable_scroll() {
+        window.onmousewheel = document.onmousewheel = wheel;
+        document.onkeydown = keydown;
+        document.body.ontouchmove = touchmove;
+    }
+
+    function enable_scroll() {
+        window.onmousewheel = document.onmousewheel = document.onkeydown = document.body.ontouchmove = null;
+    }
+
+
+    var docElem = window.document.documentElement,
+        scrollVal,
+        isRevealed,
+        noscroll,
+        isAnimating,
+        target = $('.push-animation');
+
+    var scrollY = function() {
         return window.pageYOffset || docElem.scrollTop;
     }
 
 
+    var scrollPage = function() {
+        scrollVal = scrollY();
+
+        //fix banner scrolling event
+        if (noscroll && !ie) {
+            if (scrollVal < 0) return false;
+            window.scrollTo(0, 0);
+        }
+
+        if (isAnimating) {
+            return false;
+        }
+
+        if (scrollVal <= 0 && isRevealed) {
+            toggle(0);
+        } else if (scrollVal > 0 && !isRevealed) {
+            toggle(1);
+        }
+    }
+
+    var toggle = function(reveal) {
+        isAnimating = true;
+
+        if (reveal) {
+            target.addClass('performing');
+        } else {
+            noscroll = true;
+            disable_scroll();
+            target.removeClass('performing');
+        }
+
+        setTimeout(function() {
+            isRevealed = !isRevealed;
+            isAnimating = false;
+            if (reveal) {
+                noscroll = false;
+                $("video")[0].pause();
+                enable_scroll();
+            }
+            $("video")[0].play();
+        }, 1300);
+    }
+
+    var pageScroll = scrollY();
+    noscroll = pageScroll === 0;
+
+    disable_scroll();
+
+    if (pageScroll) {
+        isRevealed = true;
+        target.addClass('performing');
+    }
+
+    window.addEventListener('scroll', scrollPage);
 
 }());

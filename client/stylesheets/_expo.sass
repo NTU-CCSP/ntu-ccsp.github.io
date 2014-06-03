@@ -16,16 +16,17 @@
 		right: 0
 		width: 30%
 		height: $line-hight
-		+background( linear-gradient( left, rgba(255, 255, 255, 0), $bgcolcor ) )
+		+background( linear-gradient( left, rgba($bgcolcor, 0), $bgcolcor ) )
 		pointer-events: none
 
 html, body
 	height: 100%
+	background: image-url('zigzag.png')
 
 #expo-show
-	position: relative
+	position: absolute
 	margin: 0 auto
-	min-height: 600px
+	min-height: 560px
 	width: 100%
 	height: 100%
 
@@ -105,21 +106,32 @@ html, body
 // ---------------
 
 .push-animation
-	+transition( all 1s cubic-bezier(0.7,0,0.3,1) )
+	+transition( all 1.2s cubic-bezier(0.7,0,0.3,1) )
 
 	&.performing
 		opacity: 0
 		+transform( translateY(-100%) scale(0.9) )
 
 
+
 #project-list
 	background: image-url('zigzag.png')
+	//address child padding overflow
 	overflow: auto
+	+padding-trailer(2)
+
+	+transition( all 1s )
+	+transform( translateY(400px) )
+	opacity: 0
+
+	.push-animation.performing + &
+		+transition-delay( 0.5s )
+		+transform( translateY(0) )
+		opacity: 1
 
 	h2
 		text-align: center
 		color: $green
-		font-family: $serif
 		text-transform: uppercase
 
 .expo-brief
@@ -131,11 +143,11 @@ html, body
 		position: absolute
 		top: 50%
 		left: 50%
-		margin: -21px 0 0 -21px
+		margin: -26px 0 0 -15px
 		font-size: rem-calc(42)
 		visibility: hidden
 		opacity: 0
-		color: scale-color( $orange, $lightness: 1%, $saturation: -92%)
+		color: #ddd
 
 		&:hover
 			color: scale-color( $orange, $lightness: 30%, $saturation: -32%)
@@ -151,7 +163,7 @@ html, body
 			background: #343434
 			
 			img
-				opacity: .7
+				opacity: .6
 			
 			.origin-url
 				visibility: visible
