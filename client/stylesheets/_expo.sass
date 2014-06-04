@@ -202,6 +202,14 @@ body#expo
 		margin-left: rem-calc(12)
 		margin-right: rem-calc(12)
 		color: #b9bdc0
+		position: relative // Containing block for the <a>
+
+		a
+			display: block
+			width: 100%
+			height: 100%
+			+unstyled-link
+			cursor: pointer
 	
 	.meta-list
 		height: rem-calc(54)
