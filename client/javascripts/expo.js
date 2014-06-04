@@ -1,41 +1,5 @@
 (function() {
 
-    // Initialize foundation
-    $(document).foundation();
-
-    var currentModal;
-
-    var router = function() {
-        var teamName = location.hash && location.hash.slice(1);
-
-        if (teamName) {
-            // There is a team
-            console.log("team", teamName);
-            currentModal = $('#modal-' + teamName);
-            currentModal.foundation('reveal', 'open', {});
-        } else {
-            // Close modal and unset currentModal
-            console.log("unset team");
-            if (currentModal) {
-                currentModal.foundation('reveal', 'close', {});
-            }
-            currentModal = null;
-        }
-    };
-
-    // Remove hash when modal is closed
-    // Reference: http://stackoverflow.com/questions/1397329/how-to-remove-the-hash-from-window-location-with-javascript-without-page-refresh
-    $(document).on('closed', '[data-reveal]', function() {
-        var scrollTop = document.body.scrollTop;
-
-        location.hash = ""; // Triggers router(), but should have no side-effects.
-
-        document.body.scrollTop = scrollTop;
-    });
-
-    window.onhashchange = router;
-    router();
-
     /* ----------- Animation Code---------------*/
 
     //ie detect
@@ -90,7 +54,7 @@
 
     var docElem = window.document.documentElement,
         scrollVal,
-        isRevealed,
+        isRevealed = false, // true: content revealed
         noscroll,
         isAnimating,
         target = $('.push-animation');
@@ -124,7 +88,7 @@
         isAnimating = true;
 
         if (reveal) {
-            target.addClass('performing');
+            target.addClass('performing'); // Reveal the content
         } else {
             noscroll = true;
             disable_scroll();
@@ -155,4 +119,48 @@
 
     window.addEventListener('scroll', scrollPage);
 
+    /* Routing */
+
+    // Initialize foundation
+    $(document).foundation();
+
+    var currentModal;
+
+    var router = function() {
+        var teamName = location.hash && location.hash.slice(1);
+
+        if (teamName) {
+            // There is a team
+            // console.log("team", teamName);
+            console.log(isRevealed)
+            if(!isRevealed){
+                toggle(1);
+            }
+            currentModal = $('#modal-' + teamName);
+            currentModal.foundation('reveal', 'open', {});
+        } else {
+            // Close modal and unset currentModal
+            // console.log("unset team");
+            if (currentModal) {
+                currentModal.foundation('reveal', 'close', {});
+            }
+            currentModal = null;
+        }
+    };
+
+    // Remove hash when modal is closed
+    // Reference: http://stackoverflow.com/questions/1397329/how-to-remove-the-hash-from-window-location-with-javascript-without-page-refresh
+    $(document).on('closed', '[data-reveal]', function() {
+        var scrollTop = document.body.scrollTop;
+
+        location.hash = ""; // Triggers router(), but should have no side-effects.
+
+        document.body.scrollTop = scrollTop;
+    });
+
+    window.onhashchange = router;
+    router();
+
+    // Router invoked, enabme animation now.
+    target.removeClass('disable-animation');
 }());

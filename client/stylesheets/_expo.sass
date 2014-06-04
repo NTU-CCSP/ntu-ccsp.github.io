@@ -29,6 +29,7 @@ html, body
 	min-height: 560px
 	width: 100%
 	height: 100%
+	z-index: 1 // lower than modal dialogs
 
 	span.special
 		color: $green
@@ -112,6 +113,10 @@ html, body
 		opacity: 0
 		+transform( translateY(-100%) scale(0.9) )
 
+	// Disable animation until the router is invoked.
+	&.disable-animation
+		+transition-duration(0)
+
 
 
 #project-list
@@ -128,6 +133,10 @@ html, body
 		+transition-delay( 0.5s )
 		+transform( translateY(0) )
 		opacity: 1
+
+	.push-animation.disable-animation + &
+		+transition-delay(0)
+		+transition-duration(0)
 
 	h2
 		text-align: center
