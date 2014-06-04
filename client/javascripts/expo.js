@@ -45,13 +45,13 @@
         // e.preventDefault();
     }
 
-    function disable_scroll() {
+    function disableScroll() {
         window.onmousewheel = document.onmousewheel = wheel;
         document.onkeydown = keydown;
         document.body.ontouchmove = touchmove;
     }
 
-    function enable_scroll() {
+    function enableScroll() {
         window.onmousewheel = document.onmousewheel = document.onkeydown = document.body.ontouchmove = null;
     }
     // ----- disable/enable scroll  -----
@@ -97,7 +97,7 @@
             target.addClass('performing'); // Reveal the content
         } else {
             noscroll = true;
-            disable_scroll();
+            disableScroll();
             target.removeClass('performing');
         }
 
@@ -108,7 +108,7 @@
             if (reveal) {
                 $("video")[0].pause();
                 noscroll = false;
-                enable_scroll();
+                enableScroll();
             }
             $("video")[0].play();
         }, 1300);
@@ -118,12 +118,12 @@
     var pageScroll = scrollY();
     noscroll = pageScroll === 0;
 
-    disable_scroll();
+    disableScroll();
 
     if (pageScroll) {
         isRevealed = true;
         target.addClass('performing');
-        enable_scroll();
+        enableScroll();
     }
     // ---- For page Refresh ----
     window.addEventListener('scroll', scrollPage);
