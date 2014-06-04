@@ -131,9 +131,9 @@
 
         if (teamName) {
             // There is a team
-            // console.log("team", teamName);
-            console.log(isRevealed)
+
             if(!isRevealed){
+                // If content not revealed yet, reveal content.
                 toggle(1);
             }
             currentModal = $('#modal-' + teamName);
