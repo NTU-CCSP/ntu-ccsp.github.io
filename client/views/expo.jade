@@ -88,7 +88,7 @@ html
                 i.fi-social-github
                 | 
                 = row["gsx$專案githubrepository網址"]["$t"].replace('https://github.com/', '')
-            p.desc= row["gsx$作品描述"]["$t"]
+            p.desc!= escapeTags(row["gsx$作品描述"]["$t"]).replace(/\n/gi, "<br>")
 
     footer.expo-footer
       .row
