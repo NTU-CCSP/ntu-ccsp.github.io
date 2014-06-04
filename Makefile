@@ -82,7 +82,7 @@ release: install
 
 	$(installNpm)
 	$(installBower)
-	echo "Release public(s) onto $(releaseBranch) branch but not pushed.\nCheck it out!"
+	@echo "Release public(s) onto $(releaseBranch) branch but not pushed.\nCheck it out!"
 
 lib: install
 	$(bin)/karma start --auto-watch --no-single-run test/karma.js
