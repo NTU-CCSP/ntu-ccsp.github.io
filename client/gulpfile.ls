@@ -53,6 +53,7 @@ gulp.task 'client:js:common' ->
     bower_components/jquery/dist/jquery.js
     client/javascripts/vendor/jquery.sticky.js
     client/javascripts/vendor/scrollit.min.js
+    client/javascripts/vendor/touchSwipe.js
     bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.js
     bower_components/foundation/js/foundation.js
   ]>

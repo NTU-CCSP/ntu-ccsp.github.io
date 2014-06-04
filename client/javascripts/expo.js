@@ -20,8 +20,12 @@
 
         return ((rv > -1) ? rv : undef);
     }());
+    // 
+    var isMobile = function() {
+        return !matchMedia(Foundation.media_queries['large']).matches;
+    }
 
-    // disable/enable scroll
+    // ----- disable/enable scroll  -----
     var keys = [32, 37, 38, 39, 40];
 
     function keydown(e) {
@@ -34,7 +38,7 @@
     }
 
     function touchmove(e) {
-        // e.preventDefault();
+        e.preventDefault();
     }
 
     function wheel(e) {
@@ -50,13 +54,13 @@
     function enable_scroll() {
         window.onmousewheel = document.onmousewheel = document.onkeydown = document.body.ontouchmove = null;
     }
-
+    // ----- disable/enable scroll  -----
 
     var docElem = window.document.documentElement,
-        scrollVal,
+        scrollVal = 0,
         isRevealed = false, // true: content revealed
         noscroll,
-        isAnimating,
+        isAnimating = false,
         target = $('.push-animation');
 
     var scrollY = function() {
@@ -72,6 +76,8 @@
             if (scrollVal < 0) return false;
             window.scrollTo(0, 0);
         }
+
+        console.log("noscroll: " + noscroll);
 
         if (isAnimating) {
             return false;
@@ -98,15 +104,17 @@
         setTimeout(function() {
             isRevealed = !isRevealed;
             isAnimating = false;
+
             if (reveal) {
-                noscroll = false;
                 $("video")[0].pause();
+                noscroll = false;
                 enable_scroll();
             }
             $("video")[0].play();
         }, 1300);
     }
 
+    // ---- For page Refresh ----
     var pageScroll = scrollY();
     noscroll = pageScroll === 0;
 
@@ -115,9 +123,19 @@
     if (pageScroll) {
         isRevealed = true;
         target.addClass('performing');
+        enable_scroll();
+    }
+    // ---- For page Refresh ----
+    window.addEventListener('scroll', scrollPage);
+
+    if (isMobile) {
+        target.swipe({
+            swipeUp: function(event, direction, distance, duration) {
+                toggle(true);
+            }
+        });
     }
 
-    window.addEventListener('scroll', scrollPage);
 
     /* Routing */
 
@@ -132,7 +150,7 @@
         if (teamName) {
             // There is a team
 
-            if(!isRevealed){
+            if (!isRevealed) {
                 // If content not revealed yet, reveal content.
                 toggle(1);
             }
