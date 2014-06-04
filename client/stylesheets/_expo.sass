@@ -19,7 +19,7 @@
 		+background( linear-gradient( left, rgba($bgcolcor, 0), $bgcolcor ) )
 		pointer-events: none
 
-html, body
+body#expo
 	height: 100%
 	background: image-url('zigzag.png')
 
@@ -34,44 +34,45 @@ html, body
 	span.special
 		color: $green
 
-.title
-	position: absolute
-	top: 50%
-	left: 50%
-	+transform( translateX(-50%) translateY(-50%) )
-	
-	%meta
-		color: lighten( #aaa, 10% )
-		display: inline-block
-
-	.time
-		@extend %meta
-		@media #{$medium-up}
-			float: left
-		
-
-	.location
-		@extend %meta
-		@media #{$medium-up} 
-			float: right
-		
-
-
-.bg-media
-	+stretch
-	overflow: hidden
-	backface-visibility: hidden
-	-webkit-backface-visibility: hidden
-	background-image: image-url('expo-banner.jpg')
-
-	video, img
-		display: block
+	.title
 		position: absolute
-		top: 0
-		left: 0
-		min-height: 100%
-		min-width: 100%
-		background-color: #222
+		top: 50%
+		width: 100%
+		+transform( translateY(-50%) )
+		padding-top: 0 // Remove original title padding
+		
+		%meta
+			color: lighten( #aaa, 10% )
+			display: inline-block
+
+		.time
+			@extend %meta
+			@media #{$medium-up}
+				float: left
+			
+
+		.location
+			@extend %meta
+			@media #{$medium-up} 
+				float: right
+			
+
+
+	.bg-media
+		+stretch
+		overflow: hidden
+		backface-visibility: hidden
+		-webkit-backface-visibility: hidden
+		background-image: image-url('expo-banner.jpg')
+
+		video, img
+			display: block
+			position: absolute
+			top: 0
+			left: 0
+			min-height: 100%
+			min-width: 100%
+			background-color: #222
 
 .expo-intro
 	position: relative
