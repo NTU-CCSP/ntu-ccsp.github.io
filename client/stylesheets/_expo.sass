@@ -1,0 +1,230 @@
+@import compass/utilities/text
+@import compass/typography/vertical_rhythm
+@import compass/layout/stretching
+@import compass/css3
+
+=fade-ellipsis($line, $line-hight, $bgcolcor)
+	position: relative
+	overflow: hidden
+	height: $line-hight * $line /* exactly three lines */
+
+	&:after
+		content: ""
+		text-align: right
+		position: absolute
+		bottom: 0
+		right: 0
+		width: 30%
+		height: $line-hight
+		+background( linear-gradient( left, rgba($bgcolcor, 0), $bgcolcor ) )
+		pointer-events: none
+
+html, body
+	height: 100%
+	background: image-url('zigzag.png')
+
+#expo-show
+	position: absolute
+	margin: 0 auto
+	min-height: 560px
+	width: 100%
+	height: 100%
+
+	span.special
+		color: $green
+
+.title
+	position: absolute
+	top: 50%
+	left: 50%
+	+transform( translateX(-50%) translateY(-50%) )
+	
+	%meta
+		color: lighten( #aaa, 10% )
+		display: inline-block
+
+	.time
+		@extend %meta
+		@media #{$medium-up}
+			float: left
+		
+
+	.location
+		@extend %meta
+		@media #{$medium-up} 
+			float: right
+		
+
+
+.bg-media
+	+stretch
+	overflow: hidden
+	backface-visibility: hidden
+	-webkit-backface-visibility: hidden
+	background-image: image-url('expo-banner.jpg')
+
+	video, img
+		display: block
+		position: absolute
+		top: 0
+		left: 0
+		min-height: 100%
+		min-width: 100%
+		background-color: #222
+
+.expo-intro
+	position: relative
+	background: inherit
+	width: 100%
+	+leader(6)
+	+trailer(2)
+
+	h1
+		color: #fff
+		font-weight: 600
+		text-align: center
+		margin-bottom: 0
+
+		@media #{$medium-up}
+			font-size: rem-calc(42)
+
+		@media #{$large-up}
+			font-size: rem-calc(56)
+
+	.subtitle
+		font-size: rem-calc(22)
+		font-family: $str-font
+		+trailer(2)
+
+	.introduction
+		color: #b9bdc0
+
+
+
+// ---------------
+//  Animation 
+// ---------------
+
+.push-animation
+	+transition( all 1.2s cubic-bezier(0.7,0,0.3,1) )
+
+	&.performing
+		opacity: 0
+		+transform( translateY(-100%) scale(0.9) )
+
+
+
+#project-list
+	background: image-url('zigzag.png')
+	//address child padding overflow
+	overflow: auto
+	+padding-trailer(2)
+
+	+transition( all 1s )
+	+transform( translateY(400px) )
+	opacity: 0
+
+	.push-animation.performing + &
+		+transition-delay( 0.5s )
+		+transform( translateY(0) )
+		opacity: 1
+
+	h2
+		text-align: center
+		color: $green
+		text-transform: uppercase
+
+.expo-brief
+	height: 100%
+	background: #292929
+
+	.origin-url
+		display: block
+		position: absolute
+		top: 50%
+		left: 50%
+		margin: -26px 0 0 -15px
+		font-size: rem-calc(42)
+		visibility: hidden
+		opacity: 0
+		color: #ddd
+
+		&:hover
+			color: scale-color( $orange, $lightness: 30%, $saturation: -32%)
+	
+
+	.logo
+		position: relative
+		padding: 0
+		margin: 0
+		+transition( all .25s linear )
+
+		&:hover
+			background: #343434
+			
+			img
+				opacity: .6
+			
+			.origin-url
+				visibility: visible
+				opacity: 1
+
+		
+		img
+			+transition( all .25s linear )
+			background: #fff
+
+
+	h1
+		font-size: rem-calc(20)
+		margin-top: rem-calc(12)
+		margin-left: rem-calc(12)
+		color: #fff
+
+	.desc
+		height: 1.5em
+		+fade-ellipsis(3, 1.6em, #292929)
+		+trailer(2)
+		margin-left: rem-calc(12)
+		margin-right: rem-calc(12)
+		color: #b9bdc0
+	
+	.meta-list
+		height: rem-calc(54)
+		background: lighten(#2e2e2e,3%)
+		margin-left: 0
+		padding-left: rem-calc(12)
+		padding-right: rem-calc(12)
+
+		li
+			height: 100%
+
+
+	.github
+		+ellipsis
+		i
+			display: inline-block
+			margin-top: 2px
+			line-height: rem-calc(54)
+			font-size: rem-calc(42)
+			vertical-align: middle
+		
+		span
+			margin-left: rem-calc(12)
+
+.expo-footer
+	background: darken( #474b59, 5%	)
+	h5
+		color: $orange
+		&:hover
+			color: darken( $orange, 12%)
+
+	.contact
+		@media #{$medium-up}
+			float: right
+	.website
+		@media #{$medium-up}
+			float: left
+
+.expo-modal
+

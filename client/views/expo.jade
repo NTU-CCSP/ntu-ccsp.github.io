@@ -1,0 +1,112 @@
+doctype html
+html
+  head(prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#")
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title NTU 雲端學程網路及平台服務程式設計暨大學部專題研究期末成果展
+    link(rel="shortcut icon", type="image/x-icon", href="/favicon.png")
+    link(rel="canonical", href="http://ccsp.ntumobile.org")
+    link(rel="stylesheet", href="fonts/foundation-icons/foundation-icons.css")
+    link(rel="stylesheet", href="/application.css")
+    meta(property="fb:app_id", content="749366138415536")
+    meta(property="og:type", content="website")
+    meta(property="og:url", content="http://ccsp.ntumobile.org")
+    meta(property="og:title", content="NTU 雲端學程網路及平台服務程式設計暨大學部專題研究期末成果展")
+    meta(property="og:description", content="在這門課中，我們教你從零開始打造一個屬於自己的網路服務，實現你的點子。我們想讓你重新找回改變世界的能力－Code for Your Dream！")
+    meta(property="og:image", content="http://ccsp.ntumobile.org/img/logo_1024.png")
+    meta(property="og:image", content="http://ccsp.ntumobile.org/img/hero-unit.jpg")
+    meta(property="og:image", content="http://ccsp.ntumobile.org/img/fire.jpg")
+    meta(property="og:image", content="http://ccsp.ntumobile.org/img/project.jpg")
+    meta(property="og:image", content="http://ccsp.ntumobile.org/img/class.jpg")
+    script.
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-19512059-6', 'ntumobile.org');
+      ga('send', 'pageview');
+  body#expo
+    
+    header#expo-show.push-animation
+      .title
+        h1.eng
+          span C
+          | loud&nbsp
+          span C
+          | omputing-Based&nbsp
+          span S
+          | ervices Design and&nbsp
+          span P
+          | rogramming&nbsp
+          span.special Expo
+        h1 網路及平台服務程式設計成果展
+        .row
+          .small-12.medium-6.columns: h3.time 2014.06.05 11:30 ~ 14:30
+          .small-12.medium-6.columns: h3.location 台灣大學德田館 1F
+      .bg-media: video(poster="img/expo-banner.jpg" autoplay loop)
+        source(src="video/banner.mp4" type="video/mpeg4-generic")
+        source(src="video/banner.webm" type="video/webm")
+        // Image fallback for browsers not supporting video
+        img(src="img/expo-banner.jpg")
+
+    section#project-list
+
+      section.expo-intro
+        .row: .small-12.column
+          h1 網路及平台服務程式設計成果展
+          h2.subtitle 一同見證社會改變的發生！
+          p.introduction 76 位學生一同經歷了 15 週的課程，從零開始學習開發網頁服務，經歷從點子發想、前端開發、後端開發至服務部屬的訓練。並在課程中參與 g0v x CCSP 黑客松，嘗試自己動手解決看見的問題，提出自己解決方案的原型。然而黑客松只是一個開始，學員們帶著黑客松的成果與回饋，回去繼續開發改進，將他們的作品變得更好更完整。讓我們來一同見證大家努力的結果吧！
+
+      .row: .small-12.column: ul.large-block-grid-4.medium-block-grid-3
+        each row in entry
+          li: .expo-brief
+            figure.logo
+              a.model-url(href='#'+row["gsx$期末專案名稱"]["$t"].replace(/\s/g, '-'))
+                img(src=row["gsx$logo連結1200x1200pixel"]["$t"])
+              a.origin-url(href=row["gsx$網站網址"]["$t"])
+                i.fi-link
+            a(href='#'+row["gsx$期末專案名稱"]["$t"].replace(/\s/g, '-'))
+              h1= row["gsx$期末專案名稱"]["$t"]
+
+
+            p.desc= row["gsx$作品描述"]["$t"]
+            ul.meta-list
+              li.github: a(href=row["gsx$專案githubrepository網址"]["$t"])
+                i.fi-social-github
+                span= row["gsx$專案githubrepository網址"]["$t"].replace('https://github.com/', '')
+
+    each row in entry
+      div.medium.reveal-modal.expo-modal(id='modal-'+row["gsx$期末專案名稱"]["$t"].replace(/\s/g, '-') data-reveal)
+        a.close-reveal-modal &#215;
+        .row
+          .large-4.column
+            img.logo(src=row["gsx$logo連結1200x1200pixel"]["$t"])
+          .large-8.column
+            h1= row["gsx$期末專案名稱"]["$t"]
+            ul.inline-list
+              li.web: a(href=row["gsx$網站網址"]["$t"])
+                i.fi-web
+                |  網站
+              li.github: a(href=row["gsx$專案githubrepository網址"]["$t"])
+                i.fi-social-github
+                | 
+                = row["gsx$專案githubrepository網址"]["$t"].replace('https://github.com/', '')
+            p.desc= row["gsx$作品描述"]["$t"]
+
+    footer.expo-footer
+      .row
+        .small-12.small-centered.medium-6.medium-uncentered.column
+          a(href="mailto:ntuccsp@gmail.com"): h5.contact Contact Us
+        .small-12.small-centered.medium-6.medium-uncentered.column.picture-right.omega
+          a(href="http://ccsp.ntumobile.org"): h5.website Our Website
+      .row
+        .small-12.small-centered.column.text-center
+          p.copyright Copyright © 2014 CCSP, NTU Mobile HCI Lab
+          p.creator
+            | Web developed and designed by 
+            a(href="https://www.facebook.com/lucien.leee") Lucien Lee
+            | , optimized and Logo designed by 
+            a(href="http://mrorz.github.io/")  Johnson
+
+    script(src="/common.js")
+    script(src="/expo.js")
