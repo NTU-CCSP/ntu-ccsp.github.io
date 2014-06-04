@@ -169,12 +169,14 @@
 
     // Remove hash when modal is closed
     // Reference: http://stackoverflow.com/questions/1397329/how-to-remove-the-hash-from-window-location-with-javascript-without-page-refresh
+    // http://stackoverflow.com/questions/7435843/window-top-document-body-scrolltop-not-working-in-chrome-or-firefox
+    //
     $(document).on('closed', '[data-reveal]', function() {
-        var scrollTop = document.body.scrollTop;
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 
         location.hash = ""; // Triggers router(), but should have no side-effects.
 
-        document.body.scrollTop = scrollTop;
+        document.documentElement.scrollTop = document.body.scrollTop = scrollTop;
     });
 
     window.onhashchange = router;
