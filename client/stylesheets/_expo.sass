@@ -168,10 +168,13 @@ body#expo
 		position: relative
 		padding: 0
 		margin: 0
+		background: lighten(#2e2e2e,3%)
 		+transition( all .25s linear )
 
 		img
 			width: 100%
+			background: lighten(#2e2e2e,3%)
+			+transition( all .25s linear )
 
 		&:hover
 			background: #343434
@@ -182,12 +185,6 @@ body#expo
 			.origin-url
 				visibility: visible
 				opacity: 1
-
-		
-		img
-			+transition( all .25s linear )
-			background: #fff
-
 
 	h1
 		font-size: rem-calc(20)
