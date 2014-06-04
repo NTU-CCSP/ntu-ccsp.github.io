@@ -32,18 +32,20 @@ const ssurl = 'https://spreadsheets.google.com/feeds/list/0AoxVTWRslBcwdElBZUw1d
  */
 gulp.task 'client:html' !(cb) ->
   (err, data) <-! request ssurl, json: true
-  gulp.src 'client/views/**/*.jade'
+  stream = gulp.src 'client/views/**/*.jade'
   .pipe gulp-jade do
     pretty: !config.env.is 'production'
     locals: data.body.feed{entry}
   .pipe gulp.dest 'tmp/public'
   .on 'end' cb
-  .pipe gulp-livereload!
+  stream.=pipe gulp-livereload! unless config.env.is 'production'
+  stream
 
 gulp.task 'client:css' ->
-  return gulp.src 'client/stylesheets/application.scss'
+  stream = gulp.src 'client/stylesheets/application.scss'
   .pipe gulp-exec("compass compile --force --output-style #{ if config.env.is 'production' then 'compressed' else 'nested' }")
-  .pipe gulp-livereload!
+  stream.=pipe gulp-livereload! unless config.env.is 'production'
+  stream
 
 gulp.task 'client:js:common' ->
   stream = gulp.src <[
@@ -56,13 +58,15 @@ gulp.task 'client:js:common' ->
   ]>
   .pipe gulp-concat 'common.js'
   stream.=pipe gulp-uglify! if config.env.is 'production'
-  return stream.pipe gulp.dest 'tmp/public'
-  .pipe gulp-livereload!
+  stream.=pipe gulp.dest 'tmp/public'
+  stream.=pipe gulp-livereload! unless config.env.is 'production'
+  stream
 
 gulp.task 'client:js' <[ client:js:common ]> ->
   stream =  gulp.src 'client/javascripts/*.js'
   stream.=pipe gulp-uglify! if config.env.is 'production'
-  return stream.pipe gulp.dest 'tmp/public'
-  .pipe gulp-livereload!
+  stream.=pipe gulp.dest 'tmp/public'
+  stream.=pipe gulp-livereload! unless config.env.is 'production'
+  stream
 # define!
 exportedTasksDefinedBeginsHere!
