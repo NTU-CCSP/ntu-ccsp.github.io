@@ -145,7 +145,8 @@
     var currentModal;
 
     var router = function() {
-        var teamName = location.hash && location.hash.slice(1);
+        // Safari uses uri-encode to encode location.hash.
+        var teamName = location.hash && decodeURIComponent(location.hash.slice(1));
 
         if (teamName) {
             // There is a team
