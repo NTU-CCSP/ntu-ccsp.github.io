@@ -66,7 +66,7 @@ html
               h1= row["gsx$期末專案名稱"]["$t"]
 
 
-            p.desc= row["gsx$作品描述"]["$t"]
+            p.desc: a(href='#'+row["gsx$期末專案名稱"]["$t"].replace(/\s/g, '-'))= row["gsx$作品描述"]["$t"]
             ul.meta-list
               li.github: a(href=row["gsx$專案githubrepository網址"]["$t"])
                 i.fi-social-github
@@ -88,7 +88,7 @@ html
                 i.fi-social-github
                 | 
                 = row["gsx$專案githubrepository網址"]["$t"].replace('https://github.com/', '')
-            p.desc= row["gsx$作品描述"]["$t"]
+            p.desc!= escapeTags(row["gsx$作品描述"]["$t"]).replace(/\n/gi, "<br>")
 
     footer.expo-footer
       .row

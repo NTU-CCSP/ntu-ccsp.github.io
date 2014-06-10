@@ -27,6 +27,10 @@ require! {
 }
 
 const ssurl = 'https://spreadsheets.google.com/feeds/list/0AoxVTWRslBcwdElBZUw1dDVlTnd0UmdwdWl5eG5JUXc/od6/public/values?alt=json'
+const escapeTags = (str)->
+  # http://stackoverflow.com/questions/5499078/fastest-method-to-escape-html-tags-as-html-entities
+  str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+
 /*
  * client tasks
  */
@@ -35,7 +39,7 @@ gulp.task 'client:html' !(cb) ->
   stream = gulp.src 'client/views/**/*.jade'
   .pipe gulp-jade do
     pretty: !config.env.is 'production'
-    locals: data.body.feed{entry}
+    locals: data.body.feed{entry} <<< {escapeTags: escapeTags}
   .pipe gulp.dest 'tmp/public'
   .on 'end' cb
   stream.=pipe gulp-livereload! unless config.env.is 'production'

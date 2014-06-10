@@ -45,13 +45,13 @@
         // e.preventDefault();
     }
 
-    function disable_scroll() {
+    function disableScroll() {
         window.onmousewheel = document.onmousewheel = wheel;
         document.onkeydown = keydown;
         document.body.ontouchmove = touchmove;
     }
 
-    function enable_scroll() {
+    function enableScroll() {
         window.onmousewheel = document.onmousewheel = document.onkeydown = document.body.ontouchmove = null;
     }
     // ----- disable/enable scroll  -----
@@ -97,7 +97,7 @@
             target.addClass('performing'); // Reveal the content
         } else {
             noscroll = true;
-            disable_scroll();
+            disableScroll();
             target.removeClass('performing');
         }
 
@@ -108,7 +108,7 @@
             if (reveal) {
                 $("video")[0].pause();
                 noscroll = false;
-                enable_scroll();
+                enableScroll();
             }
             $("video")[0].play();
         }, 1300);
@@ -118,12 +118,12 @@
     var pageScroll = scrollY();
     noscroll = pageScroll === 0;
 
-    disable_scroll();
+    disableScroll();
 
     if (pageScroll) {
         isRevealed = true;
         target.addClass('performing');
-        enable_scroll();
+        enableScroll();
     }
     // ---- For page Refresh ----
     window.addEventListener('scroll', scrollPage);
@@ -145,7 +145,8 @@
     var currentModal;
 
     var router = function() {
-        var teamName = location.hash && location.hash.slice(1);
+        // Safari uses uri-encode to encode location.hash.
+        var teamName = location.hash && decodeURIComponent(location.hash.slice(1));
 
         if (teamName) {
             // There is a team
@@ -168,12 +169,14 @@
 
     // Remove hash when modal is closed
     // Reference: http://stackoverflow.com/questions/1397329/how-to-remove-the-hash-from-window-location-with-javascript-without-page-refresh
+    // http://stackoverflow.com/questions/7435843/window-top-document-body-scrolltop-not-working-in-chrome-or-firefox
+    //
     $(document).on('closed', '[data-reveal]', function() {
-        var scrollTop = document.body.scrollTop;
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 
         location.hash = ""; // Triggers router(), but should have no side-effects.
 
-        document.body.scrollTop = scrollTop;
+        document.documentElement.scrollTop = document.body.scrollTop = scrollTop;
     });
 
     window.onhashchange = router;
